@@ -63,9 +63,6 @@ const Timeline = () => {
         return (
           <PlantCycle
             plantName={item}
-            soakLength={plantData[item].cycleData.soakLength}
-            germinationLength={plantData[item].cycleData.germinationLength}
-            growLength={plantData[item].cycleData.growLength}
             harvestDate={state.harvestDate}
           />
         );
