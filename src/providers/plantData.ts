@@ -1,4 +1,4 @@
-type PlantData = {
+export type PlantData = {
   cycleData: {
     plantName: string;
     soakLength: number;
@@ -11,9 +11,8 @@ type PlantData = {
   ph: number;
 }
 
-type PlantDataCollection = {
-  peas: PlantData;
-  leak: PlantData;
+export type PlantDataCollection = {
+  [propertyName: string]: PlantData;
 }
 
 export const plantData: PlantDataCollection = {

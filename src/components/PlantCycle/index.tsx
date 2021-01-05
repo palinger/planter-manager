@@ -1,11 +1,13 @@
 import React from "react";
 import PlantEvent from "../PlantEvent";
+import { plantData } from "../../providers/plantData";
 
 export type LightCycle = "regular" | "short" | "long";
 export type WaterCycle = "regular" | "short" | "long";
 
 interface PlantCycleProps {
   plantName: string;
+  harvestDate: string;
   soakLength: number;
   germinationLength: number;
   growLength: number;
@@ -15,28 +17,43 @@ interface PlantCycleProps {
   ph?: number;
 }
 
-const PlantCycle = (props: PlantCycleProps) => {
+const PlantCycle = ({
+  plantName,
+  harvestDate,
+  soakLength,
+  germinationLength,
+  growLength,
+  seedWeight,
+  lightCycle,
+  waterCycle,
+  ph,
+}: PlantCycleProps) => {
+  const totalGrowDays = soakLength + germinationLength + growLength;
+
   return (
     <>
-      <h1>{props.plantName}</h1>
+      <h1>{plantName}</h1>
       <div className="plantCycle">
-      <PlantEvent
-          plantName="hrasok"
+        <PlantEvent
+          plantName={plantName}
+          calculatedDate={harvestDate}
           id="peas"
           type="soak"
-          length={props.soakLength}
+          length={soakLength}
         />
         <PlantEvent
-          plantName="hrasok"
+          plantName={plantName}
+          calculatedDate={harvestDate}
           id="peas"
           type="germination"
-          length={props.germinationLength}
+          length={germinationLength}
         />
         <PlantEvent
-          plantName="hrasok"
+          plantName={plantName}
+          calculatedDate={harvestDate}
           id="peas"
           type="grow"
-          length={props.growLength}
+          length={growLength}
         />
       </div>
     </>

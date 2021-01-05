@@ -1,23 +1,9 @@
 import React, { useState } from "react";
 import Select from "react-select";
 import { useAppContext } from "../../providers/context";
-import { plantData, options } from "../../providers/plantData";
+import { plantData, options, PlantDataCollection, PlantData } from "../../providers/plantData";
 import PlantCycle, { LightCycle, WaterCycle } from "../PlantCycle";
-
-type Cycle = {
-  plantName: string;
-  germinationLength: number;
-  growLength: number;
-  seedWeight?: number;
-  lightCycle?: LightCycle;
-  waterCycle?: WaterCycle;
-  ph?: number;
-};
-
-// interface TimelineProps {
-//   harvestDate: string;
-//   cycles: Cycle[];
-// }
+import moment from "moment";
 
 const Timeline = () => {
   const { state, dispatch, ACTIONS }: any = useAppContext();
@@ -50,8 +36,6 @@ const Timeline = () => {
     });
   };
 
-  // console.log(state);
-
   return (
     <div className="timelineContainer">
       <input
@@ -66,14 +50,23 @@ const Timeline = () => {
         isMulti
         options={options}
       />
+            <button
+        onClick={()=>{onClearHandler()}}>
+        Clear
+      </button>
+      <button
+        onClick={()=>{onSelectAllHandler()}}>
+        Sellect all
+      </button>
       {state?.selection?.map((item: string) => {
         console.log(item);
         return (
           <PlantCycle
             plantName={item}
             soakLength={plantData[item].cycleData.soakLength}
-            germinationLength={2}
-            growLength={7}
+            germinationLength={plantData[item].cycleData.germinationLength}
+            growLength={plantData[item].cycleData.growLength}
+            harvestDate={state.harvestDate}
           />
         );
       })}
