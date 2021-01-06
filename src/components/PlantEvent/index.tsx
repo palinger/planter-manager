@@ -25,15 +25,15 @@ const PlantEvent = ({
     <div className="plantEventContainer">
       <div className="plantEvent">
         <span className={type} onClick={(e) => getMoreOnEvent(e)}>
-          Props: <br />
+          {/* Props: <br />
           plantName: {plantName}
           <br />
           type: {type}
-          <br />
-           {calculatedDate}
-          <br />
+          <br /> */}
+           {/* {calculatedDate} */}
+          {/* <br />
           id: {id}
-          <br />
+          <br /> */}
         </span>
       </div>
     </div>

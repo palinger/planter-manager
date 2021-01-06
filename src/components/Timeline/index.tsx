@@ -64,8 +64,7 @@ const Timeline = () => {
         Sellect all
       </button>
       {state?.selection?.map((item: string) => {
-        console.log(item);
-        return <PlantCycle plantName={item} harvestDate={state.harvestDate} />;
+        return <PlantCycle id={item} harvestDate={state.harvestDate} />;
       })}
     </div>
   );

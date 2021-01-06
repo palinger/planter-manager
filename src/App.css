@@ -4,6 +4,8 @@
 .plantCycle {
   display: flex;
   flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .plantEventContainer {
@@ -33,6 +35,6 @@
 .grow {
   border-radius: 2px;
   border: 1px solid black;
-  padding: 5px 10px;
-  margin: 5px
+  padding: 10px 20px;
+  margin: 5px;
 }

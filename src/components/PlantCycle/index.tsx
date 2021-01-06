@@ -7,11 +7,11 @@ export type LightCycle = "regular" | "short" | "long";
 export type WaterCycle = "regular" | "short" | "long";
 
 interface PlantCycleProps {
-  plantName: string;
+  id: string;
   harvestDate: string;
 }
 
-const PlantCycle = ({ plantName, harvestDate }: PlantCycleProps) => {
+const PlantCycle = ({ id, harvestDate }: PlantCycleProps) => {
 
   let totalGrowDays: number = 0;
   let cycles: any = [];
@@ -23,7 +23,7 @@ const PlantCycle = ({ plantName, harvestDate }: PlantCycleProps) => {
   };
 
   plantData.map((item) => {
-    if (item.id === plantName) {
+    if (item.id === id) {
       totalGrowDays =
         item.cycleData.soakLength +
         item.cycleData.germinationLength +
@@ -32,18 +32,18 @@ const PlantCycle = ({ plantName, harvestDate }: PlantCycleProps) => {
   });
 
   plantData.map((item, index) => {
-    if (item.id === plantName) {
+    if (item.id === id) {
       new Array(item.cycleData.soakLength)
         .fill(0)
         .map((loopItem, index: number) => {
           cycles.push(
             <PlantEvent
               key={index}
-              plantName={plantName}
+              plantName={item.plantName}
               calculatedDate={
                 index === 0 ? calculateDates(harvestDate, totalGrowDays) : ""
               }
-              id="peas"
+              id={item.id}
               type="soak"
               length={item.cycleData.soakLength}
             />
@@ -56,7 +56,7 @@ const PlantCycle = ({ plantName, harvestDate }: PlantCycleProps) => {
           cycles.push(
             <PlantEvent
               key={index + 50}
-              plantName={plantName}
+              plantName={item.plantName}
               calculatedDate={
                 index === 0
                   ? calculateDates(
@@ -65,7 +65,7 @@ const PlantCycle = ({ plantName, harvestDate }: PlantCycleProps) => {
                     )
                   : ""
               }
-              id="peas"
+              id={item.id}
               type="germination"
               length={item.cycleData.germinationLength}
             />
@@ -78,7 +78,7 @@ const PlantCycle = ({ plantName, harvestDate }: PlantCycleProps) => {
           cycles.push(
             <PlantEvent
               key={index + 100}
-              plantName={plantName}
+              plantName={item.plantName}
               calculatedDate={
                 index === 0
                   ? calculateDates(
@@ -89,7 +89,7 @@ const PlantCycle = ({ plantName, harvestDate }: PlantCycleProps) => {
                     )
                   : ""
               }
-              id="grow"
+              id={item.id}
               type="grow"
               length={item.cycleData.growLength}
             />
@@ -100,8 +100,8 @@ const PlantCycle = ({ plantName, harvestDate }: PlantCycleProps) => {
 
   return (
     <>
-      <h1>{plantName}</h1>
-      <div className="plantCycle">{cycles}</div>
+      
+      <div className="plantCycle"><h1>{id}</h1>{cycles}</div>
     </>
   );
 };
