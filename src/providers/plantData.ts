@@ -21,7 +21,7 @@ export const plantData: PlantDataCollection = {
       plantName: "hrasok",
       soakLength: 1,
       germinationLength: 1,
-      growLength: 2,
+      growLength: 7,
     },
     seedWeight: 3.5,
     lightCycle: "normal",
@@ -33,7 +33,7 @@ export const plantData: PlantDataCollection = {
       plantName: "porik",
       soakLength: 1,
       germinationLength: 4,
-      growLength: 2,
+      growLength: 5,
     },
     seedWeight: 2.5,
     lightCycle: "normal",
@@ -43,7 +43,6 @@ export const plantData: PlantDataCollection = {
 };
 
 export const options = [
-  
   {
     label: "hrasok",
     value: "peas"

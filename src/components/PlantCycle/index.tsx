@@ -12,6 +12,7 @@ interface PlantCycleProps {
 }
 
 const PlantCycle = ({ plantName, harvestDate }: PlantCycleProps) => {
+  let i: number;
   const calculateDates = (date: any, days: number) => {
     let d = moment(new Date(date));
     let dm = d.subtract(days, "days");
@@ -22,9 +23,8 @@ const PlantCycle = ({ plantName, harvestDate }: PlantCycleProps) => {
     plantData[plantName].cycleData.soakLength +
     plantData[plantName].cycleData.germinationLength +
     plantData[plantName].cycleData.growLength;
-
+  
   const renderSoak = () => {
-    let i;
     for (i = 0; i <= plantData[plantName].cycleData.soakLength; i++) {
       return (
         <PlantEvent
@@ -39,7 +39,6 @@ const PlantCycle = ({ plantName, harvestDate }: PlantCycleProps) => {
   };
 
   const renderGermination = () => {
-    let i;
     for (i = 0; i <= plantData[plantName].cycleData.germinationLength; i++) {
       return (
         <PlantEvent
@@ -56,8 +55,10 @@ const PlantCycle = ({ plantName, harvestDate }: PlantCycleProps) => {
     }
   };
   const renderGrow = () => {
-    let i;
-    for (i = 0; i <= plantData[plantName].cycleData.growLength; i++) {
+    for (i = 0; i < plantData[plantName].cycleData.growLength; i++) {
+      const startDate = i;
+      console.log(i)
+      console.log(plantData[plantName].cycleData.growLength)
       return (
         <PlantEvent
           plantName={plantName}
@@ -67,7 +68,7 @@ const PlantCycle = ({ plantName, harvestDate }: PlantCycleProps) => {
               plantData[plantName].cycleData.soakLength -
               plantData[plantName].cycleData.germinationLength
           )}
-          id="peas"
+          id="grow"
           type="grow"
           length={plantData[plantName].cycleData.growLength}
         />
