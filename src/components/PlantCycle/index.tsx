@@ -12,77 +12,96 @@ interface PlantCycleProps {
 }
 
 const PlantCycle = ({ plantName, harvestDate }: PlantCycleProps) => {
-  let i: number;
-  const soakCycles = [];
-  const germinationCycles = [];
-  const growCycles = [];
+
+  let totalGrowDays: number = 0;
+  let cycles: any = [];
+
   const calculateDates = (date: any, days: number) => {
     let d = moment(new Date(date));
     let dm = d.subtract(days, "days");
-    return dm.format("dddd, MMMM Do YYYY");
+    return dm.format("ddd, MMM Do YYYY");
   };
 
-  const totalGrowDays =
-    plantData[plantName].cycleData.soakLength +
-    plantData[plantName].cycleData.germinationLength +
-    plantData[plantName].cycleData.growLength;
+  plantData.map((item) => {
+    if (item.id === plantName) {
+      totalGrowDays =
+        item.cycleData.soakLength +
+        item.cycleData.germinationLength +
+        item.cycleData.growLength;
+    }
+  });
 
-  for (i = 0; i <= plantData[plantName].cycleData.soakLength; i++) {
-    soakCycles.push(
-      <PlantEvent
-        plantName={plantName}
-        calculatedDate={calculateDates(harvestDate, totalGrowDays)}
-        id="peas"
-        type="soak"
-        length={plantData[plantName].cycleData.soakLength}
-      />
-    );
-  }
+  plantData.map((item, index) => {
+    if (item.id === plantName) {
+      new Array(item.cycleData.soakLength)
+        .fill(0)
+        .map((loopItem, index: number) => {
+          cycles.push(
+            <PlantEvent
+              key={index}
+              plantName={plantName}
+              calculatedDate={
+                index === 0 ? calculateDates(harvestDate, totalGrowDays) : ""
+              }
+              id="peas"
+              type="soak"
+              length={item.cycleData.soakLength}
+            />
+          );
+        });
 
-  for (i = 0; i <= plantData[plantName].cycleData.germinationLength; i++) {
-    germinationCycles.push(
-      <PlantEvent
-        plantName={plantName}
-        calculatedDate={calculateDates(
-          harvestDate,
-          totalGrowDays - plantData[plantName].cycleData.soakLength
-        )}
-        id="peas"
-        type="germination"
-        length={plantData[plantName].cycleData.germinationLength}
-      />
-    );
-  }
+      new Array(item.cycleData.germinationLength)
+        .fill(0)
+        .map((loopItem, index: number) => {
+          cycles.push(
+            <PlantEvent
+              key={index + 50}
+              plantName={plantName}
+              calculatedDate={
+                index === 0
+                  ? calculateDates(
+                      harvestDate,
+                      totalGrowDays - item.cycleData.soakLength
+                    )
+                  : ""
+              }
+              id="peas"
+              type="germination"
+              length={item.cycleData.germinationLength}
+            />
+          );
+        });
 
-  for (i = 0; i < plantData[plantName].cycleData.growLength; i++) {
-    const startDate = i;
-    console.log(i);
-    console.log(plantData[plantName].cycleData.growLength);
-
-    growCycles.push(
-      <PlantEvent
-        plantName={plantName}
-        calculatedDate={calculateDates(
-          harvestDate,
-          totalGrowDays -
-            plantData[plantName].cycleData.soakLength -
-            plantData[plantName].cycleData.germinationLength
-        )}
-        id="grow"
-        type="grow"
-        length={plantData[plantName].cycleData.growLength}
-      />
-    );
-  }
+      new Array(item.cycleData.growLength)
+        .fill(0)
+        .map((loopItem, index: number) => {
+          cycles.push(
+            <PlantEvent
+              key={index + 100}
+              plantName={plantName}
+              calculatedDate={
+                index === 0
+                  ? calculateDates(
+                      harvestDate,
+                      totalGrowDays -
+                        item.cycleData.soakLength -
+                        item.cycleData.germinationLength
+                    )
+                  : ""
+              }
+              id="grow"
+              type="grow"
+              length={item.cycleData.growLength}
+            />
+          );
+        });
+    }
+  });
 
   return (
     <>
       <h1>{plantName}</h1>
-      <div className="plantCycle">
-        {soakCycles}
-        {germinationCycles}
-        {growCycles}
-      </div>
+      <div className="plantCycle">{cycles}</div>
     </>
   );
 };

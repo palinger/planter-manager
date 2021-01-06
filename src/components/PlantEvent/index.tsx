@@ -30,7 +30,7 @@ const PlantEvent = ({
           <br />
           type: {type}
           <br />
-          calculated day: {calculatedDate}
+           {calculatedDate}
           <br />
           id: {id}
           <br />

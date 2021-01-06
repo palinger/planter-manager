@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import Select from "react-select";
 import { useAppContext } from "../../providers/context";
-import { plantData, options, PlantDataCollection, PlantData } from "../../providers/plantData";
-import PlantCycle, { LightCycle, WaterCycle } from "../PlantCycle";
-import moment from "moment";
+import { plantData, options } from "../../providers/plantData";
+import PlantCycle from "../PlantCycle";
 
 const Timeline = () => {
   const { state, dispatch, ACTIONS }: any = useAppContext();
@@ -50,22 +49,23 @@ const Timeline = () => {
         isMulti
         options={options}
       />
-            <button
-        onClick={()=>{onClearHandler()}}>
+      <button
+        onClick={() => {
+          onClearHandler();
+        }}
+      >
         Clear
       </button>
       <button
-        onClick={()=>{onSelectAllHandler()}}>
+        onClick={() => {
+          onSelectAllHandler();
+        }}
+      >
         Sellect all
       </button>
       {state?.selection?.map((item: string) => {
         console.log(item);
-        return (
-          <PlantCycle
-            plantName={item}
-            harvestDate={state.harvestDate}
-          />
-        );
+        return <PlantCycle plantName={item} harvestDate={state.harvestDate} />;
       })}
     </div>
   );
