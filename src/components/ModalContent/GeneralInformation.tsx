@@ -3,7 +3,7 @@ import { ContentProps } from "../../providers/interface";
 
 const GeneralInformation = ({plantObject}: ContentProps) => {
   return (
-    <pre>
+    <>
       Cleaning: cleaning time: {plantObject.clean.time}
       <br />
       cleaning solution: {plantObject.clean.solution}
@@ -15,7 +15,7 @@ const GeneralInformation = ({plantObject}: ContentProps) => {
       <br />
       per: {plantObject.planting.unit}
       <br />
-    </pre>
+    </>
   );
 };
 

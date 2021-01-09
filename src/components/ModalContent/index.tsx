@@ -13,61 +13,79 @@ interface ModalContentProps {
 
 const ModalContent = ({ variants }: ModalContentProps) => {
   let selected = plantData.filter((item) => item.id === variants.id);
-  console.log();
-  let hasSoak: boolean = selected[0].cycleData.soak.length > 0;
-  let hasGermination: boolean = selected[0].cycleData.germination.length > 0;
+  let selectedPlant = selected[0];
+  let hasSoak: boolean = selectedPlant.cycleData.soak.length > 0;
+  let hasGermination: boolean = selectedPlant.cycleData.germination.length > 0;
 
   if (variants.type === "soak") {
     return (
-      <div>
-        <GeneralInformation plantObject={selected[0]} />
-        <SoakInformation plantObject={selected[0]} />
+      <>
+        Date: {variants.date}
         <br />
-      </div>
+        <GeneralInformation plantObject={selectedPlant} />
+        <SoakInformation plantObject={selectedPlant} />
+        <br />
+      </>
     );
   }
 
   if (variants.type === "germination") {
     if (hasSoak) {
-      return <GermInformation plantObject={selected[0]} />;
+      return (
+        <>
+          Date: {variants.date}
+          <br />
+          <GermInformation plantObject={selectedPlant} />
+        </>
+      );
     } else
       return (
-        <pre>
-          <GeneralInformation plantObject={selected[0]} />
-          <SoakInformation plantObject={selected[0]} />
-          <GermInformation plantObject={selected[0]} />
-        </pre>
+        <>
+          Date: {variants.date}
+          <br />
+          <GeneralInformation plantObject={selectedPlant} />
+          <SoakInformation plantObject={selectedPlant} />
+          <GermInformation plantObject={selectedPlant} />
+        </>
       );
   } else {
     if (hasSoak && !hasGermination) {
       return (
-        <pre>
-          <GermInformation plantObject={selected[0]} />
-          <GrowInformation plantObject={selected[0]} />
-        </pre>
+        <>
+          Date: {variants.date}
+          <br />
+          <GermInformation plantObject={selectedPlant} />
+          <GrowInformation plantObject={selectedPlant} />
+        </>
       );
     }
     if (!hasSoak && hasGermination) {
       return (
-        <pre>
-          <SoakInformation plantObject={selected[0]} />
-          <GrowInformation plantObject={selected[0]} />
-        </pre>
+        <>
+          Date: {variants.date}
+          <br />
+          <SoakInformation plantObject={selectedPlant} />
+          <GrowInformation plantObject={selectedPlant} />
+        </>
       );
     }
     if (!hasSoak && !hasGermination) {
       return (
-        <pre>
-          <SoakInformation plantObject={selected[0]} />
-          <GermInformation plantObject={selected[0]} />
-          <GrowInformation plantObject={selected[0]} />
-        </pre>
+        <>
+          Date: {variants.date}
+          <br />
+          <SoakInformation plantObject={selectedPlant} />
+          <GermInformation plantObject={selectedPlant} />
+          <GrowInformation plantObject={selectedPlant} />
+        </>
       );
     } else {
       return (
-        <pre>
-          <GrowInformation plantObject={selected[0]} />
-        </pre>
+        <>
+          Date: {variants.date}
+          <br />
+          <GrowInformation plantObject={selectedPlant} />
+        </>
       );
     }
   }

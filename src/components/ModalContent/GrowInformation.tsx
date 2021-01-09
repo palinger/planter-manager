@@ -3,7 +3,7 @@ import { ContentProps } from "../../providers/interface";
 
 const GrowInformation = ({ plantObject }: ContentProps) => {
   return (
-    <pre>
+    <>
       Temperature: {plantObject.cycleData.grow.temp}
       <br />
       Water Ph: {plantObject.cycleData.grow.ph}
@@ -12,7 +12,7 @@ const GrowInformation = ({ plantObject }: ContentProps) => {
       <br />
       WaterCycle: {plantObject.cycleData.grow.waterCycle}
       <br />
-    </pre>
+    </>
   );
 };
 
