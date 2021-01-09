@@ -12,7 +12,6 @@ interface PlantCycleProps {
 }
 
 const PlantCycle = ({ id, harvestDate }: PlantCycleProps) => {
-
   let totalGrowDays: number = 0;
   let cycles: any = [];
 
@@ -24,11 +23,12 @@ const PlantCycle = ({ id, harvestDate }: PlantCycleProps) => {
 
   plantData.map((item) => {
     if (item.id === id) {
-      totalGrowDays =
+      return (totalGrowDays =
         item.cycleData.soak.length +
         item.cycleData.germination.length +
-        item.cycleData.grow.length;
+        item.cycleData.grow.length);
     }
+    return null
   });
 
   plantData.map((item, index) => {
@@ -36,7 +36,7 @@ const PlantCycle = ({ id, harvestDate }: PlantCycleProps) => {
       new Array(item.cycleData.soak.length)
         .fill(0)
         .map((loopItem, index: number) => {
-          cycles.push(
+          return cycles.push(
             <PlantEvent
               key={index}
               plantName={item.plantName}
@@ -54,7 +54,7 @@ const PlantCycle = ({ id, harvestDate }: PlantCycleProps) => {
       new Array(item.cycleData.germination.length)
         .fill(0)
         .map((loopItem, index: number) => {
-          cycles.push(
+          return cycles.push(
             <PlantEvent
               key={index + 50}
               plantName={item.plantName}
@@ -77,7 +77,7 @@ const PlantCycle = ({ id, harvestDate }: PlantCycleProps) => {
       new Array(item.cycleData.grow.length)
         .fill(0)
         .map((loopItem, index: number) => {
-          cycles.push(
+          return cycles.push(
             <PlantEvent
               key={index + 100}
               plantName={item.plantName}
@@ -98,12 +98,16 @@ const PlantCycle = ({ id, harvestDate }: PlantCycleProps) => {
             />
           );
         });
-    }
+      return null
+    } else return null
   });
 
   return (
     <>
-      <div className="plantCycle"><h2>{id}</h2>{cycles}</div>
+      <div className="plantCycle">
+        <h2>{id}</h2>
+        {cycles}
+      </div>
     </>
   );
 };

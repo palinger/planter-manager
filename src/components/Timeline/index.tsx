@@ -76,7 +76,7 @@ const Timeline = () => {
         <div className="dayNumbers">
           {new Array(20).fill(0).map((item: number, index: number) => {
             return (
-              <div className={(index + 1) % 7 === 0 ? "seven" : ""}>
+              <div key={index} className={(index + 1) % 7 === 0 ? "seven" : ""}>
                 <div>{20 - index}</div>
               </div>
             );
