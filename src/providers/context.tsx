@@ -1,20 +1,24 @@
 import React, { useContext, useReducer } from "react";
 import { plantData } from "../providers/plantData";
 
+export type ModalSelection = {
+  id: string;
+  type: string;
+};
+
 export type State = {
   selection: string[];
-  harvestDate: string
-}
+  harvestDate: string;
+  modalSelection: ModalSelection;
+};
 
 const initialState: State = {
   selection: [],
-  // radish: false,
-  // peas: false,
-  // leak: false,
-  // brokolli: false,
-  // redCabbage: false,
-  // pakchoi: false,
   harvestDate: "2021-01-01",
+  modalSelection: {
+    id: "",
+    type: "",
+  },
 };
 
 const Context = React.createContext([
@@ -30,6 +34,7 @@ const ACTIONS = {
   UPDATE_SELECTION: "UPDATE_SELECTION",
   ALL_SELECTION: "ALL_SELECTION",
   CLEAR_SELECTION: "CLEAR_SELECTION",
+  SELECTED_MODAL_EVENT: "SELECTED_MODAL_EVENT",
 };
 
 export const reducer = (state: State, { type, payload }: any) => {
@@ -48,7 +53,9 @@ export const reducer = (state: State, { type, payload }: any) => {
 
     case "SET_DATE":
       return { ...state, harvestDate: payload };
-    
+
+    case "SELECTED_MODAL_EVENT":
+      return { ...state, modalSelection: payload };
     default:
       return state;
   }

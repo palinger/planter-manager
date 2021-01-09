@@ -35,6 +35,34 @@
 .grow {
   border-radius: 2px;
   border: 1px solid black;
-  padding: 10px 20px;
-  margin: 5px;
+  padding: 5px 6px;
+  margin: 2px;
+}
+
+.visualWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.dayNumbers {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.dayNumbers > div {
+  border-radius: 2px;
+  border: 1px solid black;
+  margin: 2px;
+  min-width: 36px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.seven {
+  background-color: whitesmoke;
+}
+
+.iconEvent:hover {
+  cursor: pointer
 }

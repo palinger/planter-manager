@@ -46,6 +46,7 @@ const PlantCycle = ({ id, harvestDate }: PlantCycleProps) => {
               id={item.id}
               type="soak"
               length={item.cycleData.soakLength}
+              isFirst={index === 0 ? true : false}
             />
           );
         });
@@ -68,6 +69,7 @@ const PlantCycle = ({ id, harvestDate }: PlantCycleProps) => {
               id={item.id}
               type="germination"
               length={item.cycleData.germinationLength}
+              isFirst={index === 0 ? true : false}
             />
           );
         });
@@ -92,6 +94,7 @@ const PlantCycle = ({ id, harvestDate }: PlantCycleProps) => {
               id={item.id}
               type="grow"
               length={item.cycleData.growLength}
+              isFirst={index === 0 ? true : false}
             />
           );
         });
@@ -100,8 +103,7 @@ const PlantCycle = ({ id, harvestDate }: PlantCycleProps) => {
 
   return (
     <>
-      
-      <div className="plantCycle"><h1>{id}</h1>{cycles}</div>
+      <div className="plantCycle"><h2>{id}</h2>{cycles}</div>
     </>
   );
 };
