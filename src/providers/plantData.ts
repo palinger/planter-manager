@@ -1,99 +1,133 @@
-export type CycleData = {
-  soakLength: number;
-  germinationLength: number;
-  growLength: number;
-};
-
-export type PlantData = {
-  id: string;
-  plantName: string;
-  seedWeight: number;
-  lightCycle: string;
-  waterCycle: string;
-  ph: number;
-  cycleData: CycleData;
-};
+import { PlantData, Options } from "./interface";
 
 export const plantData: PlantData[] = [
   {
     id: "leak",
     plantName: "porik",
-    seedWeight: 2.5,
-    lightCycle: "normal",
-    waterCycle: "normal",
-    ph: 6.6,
+    clean: {
+      time: "15min",
+      solution: "3%",
+    },
+    planting: {
+      seedWeight: 4.5,
+      unit: "kelimok",
+    },
     cycleData: {
-      soakLength: 1,
-      germinationLength: 1,
-      growLength: 5,
+      soak: {
+        length: 0,
+        time: "30 mins",
+        temp: "20 C",
+      },
+      germination: {
+        length: 1,
+        time: "24 hours",
+        temp: "20 C",
+      },
+      grow: {
+        length: 3,
+        lightCycle: "regular",
+        waterCycle: "regular",
+        ph: 6.6,
+        temp: "20 C",
+      },
     },
   },
   {
     id: "peas",
     plantName: "hrasok",
-    seedWeight: 2.5,
-    lightCycle: "normal",
-    waterCycle: "normal",
-    ph: 7.6,
+    clean: {
+      time: "15min",
+      solution: "3%",
+    },
+    planting: {
+      seedWeight: 5.5,
+      unit: "kelimok",
+    },
     cycleData: {
-      soakLength: 2,
-      germinationLength: 1,
-      growLength: 6,
+      soak: {
+        length: 2,
+        time: "48 hours",
+        temp: "22 C",
+      },
+      germination: {
+        length: 0,
+        time: "1 hour",
+        temp: "22 C",
+      },
+      grow: {
+        length: 7,
+        lightCycle: "regular",
+        waterCycle: "regular",
+        ph: 6.6,
+        temp: "22 C",
+      },
     },
   },
   {
     id: "redCabbage",
     plantName: "redCabbage",
-    seedWeight: 2.5,
-    lightCycle: "normal",
-    waterCycle: "normal",
-    ph: 7.6,
+    clean: {
+      time: "15min",
+      solution: "3%",
+    },
+    planting: {
+      seedWeight: 5.5,
+      unit: "kelimok",
+    },
     cycleData: {
-      soakLength: 0,
-      germinationLength: 1,
-      growLength: 9,
+      soak: {
+        length: 1,
+        time: "30min",
+        temp: "20 C",
+      },
+      germination: {
+        length: 1,
+        time: "24 hours",
+        temp: "20 C",
+      },
+      grow: {
+        length: 8,
+        lightCycle: "regular",
+        waterCycle: "regular",
+        ph: 6.6,
+        temp: "20 C",
+      },
     },
   },
   {
     id: "brocolli",
     plantName: "brokolica",
-    seedWeight: 2.5,
-    lightCycle: "normal",
-    waterCycle: "normal",
-    ph: 7.6,
+    clean: {
+      time: "15min",
+      solution: "3%",
+    },
+    planting: {
+      seedWeight: 2.5,
+      unit: "kelimok",
+    },
     cycleData: {
-      soakLength: 2,
-      germinationLength: 1,
-      growLength: 12,
+      soak: {
+        length: 0,
+        time: "15min",
+        temp: "20 C",
+      },
+      germination: {
+        length: 0,
+        time: "30 min",
+        temp: "20 C",
+      },
+      grow: {
+        length: 4,
+        lightCycle: "regular",
+        waterCycle: "regular",
+        ph: 6.6,
+        temp: "20 C",
+      },
     },
   },
 ];
 
-// const cycleData = {
-//   soak: {
-//     length: 2,
-//     time: "15min",
-//     solution: {
-//       percentage: "5%",
-//       parts: "",
-//     },
-//     seed: {
-//       weight: "5.5g",
-//       volume: "100ml",
-//     },
-//   },
-//   germination: {
-//     length: 2,
-//     temp: "20 C"
-//   },
-//   grow: {
-//     length: 7,
-//     lightCycle: "normal",
-//     waterCycle: "normal",
-//   },
-// };
-
-export const options = [
+export const options: Options[] = [
   {
     label: "hrasok",
     value: "peas",

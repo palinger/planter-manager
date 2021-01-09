@@ -25,15 +25,15 @@ const PlantCycle = ({ id, harvestDate }: PlantCycleProps) => {
   plantData.map((item) => {
     if (item.id === id) {
       totalGrowDays =
-        item.cycleData.soakLength +
-        item.cycleData.germinationLength +
-        item.cycleData.growLength;
+        item.cycleData.soak.length +
+        item.cycleData.germination.length +
+        item.cycleData.grow.length;
     }
   });
 
   plantData.map((item, index) => {
     if (item.id === id) {
-      new Array(item.cycleData.soakLength)
+      new Array(item.cycleData.soak.length)
         .fill(0)
         .map((loopItem, index: number) => {
           cycles.push(
@@ -45,13 +45,13 @@ const PlantCycle = ({ id, harvestDate }: PlantCycleProps) => {
               }
               id={item.id}
               type="soak"
-              length={item.cycleData.soakLength}
+              length={item.cycleData.soak.length}
               isFirst={index === 0 ? true : false}
             />
           );
         });
 
-      new Array(item.cycleData.germinationLength)
+      new Array(item.cycleData.germination.length)
         .fill(0)
         .map((loopItem, index: number) => {
           cycles.push(
@@ -62,19 +62,19 @@ const PlantCycle = ({ id, harvestDate }: PlantCycleProps) => {
                 index === 0
                   ? calculateDates(
                       harvestDate,
-                      totalGrowDays - item.cycleData.soakLength
+                      totalGrowDays - item.cycleData.soak.length
                     )
                   : ""
               }
               id={item.id}
               type="germination"
-              length={item.cycleData.germinationLength}
+              length={item.cycleData.germination.length}
               isFirst={index === 0 ? true : false}
             />
           );
         });
 
-      new Array(item.cycleData.growLength)
+      new Array(item.cycleData.grow.length)
         .fill(0)
         .map((loopItem, index: number) => {
           cycles.push(
@@ -86,14 +86,14 @@ const PlantCycle = ({ id, harvestDate }: PlantCycleProps) => {
                   ? calculateDates(
                       harvestDate,
                       totalGrowDays -
-                        item.cycleData.soakLength -
-                        item.cycleData.germinationLength
+                        item.cycleData.soak.length -
+                        item.cycleData.germination.length
                     )
                   : ""
               }
               id={item.id}
               type="grow"
-              length={item.cycleData.growLength}
+              length={item.cycleData.grow.length}
               isFirst={index === 0 ? true : false}
             />
           );

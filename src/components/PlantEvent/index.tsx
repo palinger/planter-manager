@@ -20,16 +20,20 @@ const PlantEvent = ({
   id,
   isFirst,
 }: PlantEventProps) => {
-  const { state, dispatch, ACTIONS }: any = useAppContext();
+  const { dispatch, ACTIONS }: any = useAppContext();
+  
   const getMoreOnEvent = (e: any, eventId: string, eventType: string) => {
-    
-    // console.log(e.target.parentNode.className)
     dispatch({
       type: ACTIONS.SELECTED_MODAL_EVENT,
       payload: {
         type: eventType,
-        id: eventId
+        id: eventId,
+        date: calculatedDate
       }
+    })
+    dispatch({
+      type: ACTIONS.SET_MODAL_STATE,
+      payload: true
     })
   };
 

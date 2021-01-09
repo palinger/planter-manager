@@ -4,12 +4,14 @@ import { plantData } from "../providers/plantData";
 export type ModalSelection = {
   id: string;
   type: string;
+  date: string;
 };
 
 export type State = {
   selection: string[];
   harvestDate: string;
   modalSelection: ModalSelection;
+  modalState: boolean;
 };
 
 const initialState: State = {
@@ -18,7 +20,9 @@ const initialState: State = {
   modalSelection: {
     id: "",
     type: "",
+    date: ""
   },
+  modalState: false
 };
 
 const Context = React.createContext([
@@ -35,6 +39,7 @@ const ACTIONS = {
   ALL_SELECTION: "ALL_SELECTION",
   CLEAR_SELECTION: "CLEAR_SELECTION",
   SELECTED_MODAL_EVENT: "SELECTED_MODAL_EVENT",
+  SET_MODAL_STATE: "SET_MODAL_STATE"
 };
 
 export const reducer = (state: State, { type, payload }: any) => {
@@ -56,6 +61,10 @@ export const reducer = (state: State, { type, payload }: any) => {
 
     case "SELECTED_MODAL_EVENT":
       return { ...state, modalSelection: payload };
+    
+    case "SET_MODAL_STATE":
+      return { ...state, modalState: payload };
+    
     default:
       return state;
   }

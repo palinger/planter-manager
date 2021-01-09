@@ -1,20 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
 import Select from "react-select";
 import { useAppContext } from "../../providers/context";
 import { plantData, options } from "../../providers/plantData";
 import PlantCycle from "../PlantCycle";
 import Modal from "react-modal";
+import ModalContent from "../ModalContent";
 
 const Timeline = () => {
   const { state, dispatch, ACTIONS }: any = useAppContext();
-  const [modalState, setModalState] = useState(false);
-  
-  const openModal = () => {
-    setModalState(true);
-  };
 
   const closeModal = () => {
-    setModalState(false);
+    dispatch({
+      type: ACTIONS.SET_MODAL_STATE,
+      payload: false
+    })
   };
 
   const onPlantChangeHandler = (selection: any) => {
@@ -95,11 +94,9 @@ const Timeline = () => {
           })}
         </div>
       </div>
-      <button onClick={openModal}>Open Modal</button>
-      <Modal isOpen={modalState} contentLabel="Example Modal">
+      <Modal isOpen={state.modalState} contentLabel="Example Modal">
         <button onClick={closeModal}>close</button>
-        {/* <h3>{plantData[state.modalSelection.id].cycleData[state.modalSelection.type]}</h3> */}
-        <p></p>
+        <ModalContent variants={state.modalSelection} />
       </Modal>
     </div>
   );
