@@ -5,6 +5,7 @@ import { plantData, options } from "../../providers/plantData";
 import PlantCycle from "../PlantCycle";
 import Modal from "react-modal";
 import ModalContent from "../ModalContent";
+import ClearIcon from "@material-ui/icons/Clear";
 
 const Timeline = () => {
   const { state, dispatch, ACTIONS }: any = useAppContext();
@@ -99,7 +100,7 @@ const Timeline = () => {
         </div>
       </div>
       <Modal isOpen={state.modalState} contentLabel="Example Modal">
-        <button onClick={closeModal}>close</button>
+        <ClearIcon className="clearIcon" onClick={closeModal} />
         <ModalContent variants={state.modalSelection} />
       </Modal>
     </div>

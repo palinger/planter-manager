@@ -102,3 +102,6 @@ body {
   width: 300px;
   margin: 0 auto;
 }
+.clearIcon {
+  float: right
+}
