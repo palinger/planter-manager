@@ -1,5 +1,7 @@
 body {
   background-color: lightgray;
+  background-image: url("https://image.freepik.com/free-photo/green-pattern-from-freshly-picked-natural-organic-microgreen-sprouted-against-white-table-super-food-concept_338799-329.jpg");
+  color: rgba(0, 0, 0, 0.87);
 }
 
 .App {
@@ -10,6 +12,10 @@ body {
   flex-wrap: wrap;
   justify-content: flex-end;
   align-items: center;
+}
+
+.plantCycle h3 {
+  margin-right: 8px
 }
 
 .plantEventContainer {
@@ -23,15 +29,15 @@ body {
 }
 
 .soak {
-  background-color: darkgoldenrod;
+  background-color: #cddc39;
 }
 
 .germination {
-  background-color: yellow;
+  background-color: #8bc34a;
 }
 
 .grow {
-  background-color: yellowgreen;
+  background-color: #4caf50;
 }
 
 .soak,
@@ -43,14 +49,18 @@ body {
   margin: 2px;
 }
 
+.selectWrapper {
+  width: 260px
+}
+
 .visualWrapper {
   display: flex;
   flex-direction: column;
 
   min-height: 200px;
-  width: 840px;
+  max-width: 840px;
   border: 1px solid black;
-  margin: 0 auto;
+  margin: 0 auto 24px;
   padding: 8px;
   background-color: white;
   border-radius: 2px;
@@ -80,7 +90,7 @@ body {
 }
 
 .controls {
-  width: 840px;
+  max-width: 840px;
   border: 1px solid black;
   margin: 24px auto;
   padding: 8px;
@@ -95,13 +105,40 @@ body {
 }
 
 .controls button {
-  margin: 8px
+  margin: 8px 8px 8px 0px;
 }
 
 .ReactModal__Content--after-open {
   width: 300px;
   margin: 0 auto;
 }
+
 .clearIcon {
-  float: right
+  float: right;
+  cursor: pointer;
+}
+
+.modalContent {
+  float: left;
+  width: 100%;
+}
+
+.modalBox p {
+  display: flex;
+  align-items: center;
+}
+
+.dayInformation {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.dayInformation p {
+  margin: 0;
+}
+
+.modalBox p svg {
+  margin-right: 8px;
 }

@@ -4,7 +4,7 @@ import SoakInformation from "./SoakInformation";
 import GeneralInformation from "./GeneralInformation";
 import GermInformation from "./GermInformation";
 import GrowInformation from "./GrowInformation";
-
+import DayInformation from "./DayInformation";
 import { plantData } from "../../providers/plantData";
 
 interface ModalContentProps {
@@ -20,11 +20,9 @@ const ModalContent = ({ variants }: ModalContentProps) => {
   if (variants.type === "soak") {
     return (
       <>
-        Date: {variants.date}
-        <br />
+        <DayInformation date={variants.date} />
         <GeneralInformation plantObject={selectedPlant} />
         <SoakInformation plantObject={selectedPlant} />
-        <br />
       </>
     );
   }
@@ -33,16 +31,14 @@ const ModalContent = ({ variants }: ModalContentProps) => {
     if (hasSoak) {
       return (
         <>
-          Date: {variants.date}
-          <br />
+          <DayInformation date={variants.date} />
           <GermInformation plantObject={selectedPlant} />
         </>
       );
     } else
       return (
         <>
-          Date: {variants.date}
-          <br />
+          <DayInformation date={variants.date} />
           <GeneralInformation plantObject={selectedPlant} />
           <SoakInformation plantObject={selectedPlant} />
           <GermInformation plantObject={selectedPlant} />
@@ -52,8 +48,7 @@ const ModalContent = ({ variants }: ModalContentProps) => {
     if (hasSoak && !hasGermination) {
       return (
         <>
-          Date: {variants.date}
-          <br />
+          <DayInformation date={variants.date} />
           <GermInformation plantObject={selectedPlant} />
           <GrowInformation plantObject={selectedPlant} />
         </>
@@ -62,8 +57,7 @@ const ModalContent = ({ variants }: ModalContentProps) => {
     if (!hasSoak && hasGermination) {
       return (
         <>
-          Date: {variants.date}
-          <br />
+          <DayInformation date={variants.date} />
           <SoakInformation plantObject={selectedPlant} />
           <GrowInformation plantObject={selectedPlant} />
         </>
@@ -72,8 +66,8 @@ const ModalContent = ({ variants }: ModalContentProps) => {
     if (!hasSoak && !hasGermination) {
       return (
         <>
-          Date: {variants.date}
-          <br />
+          <DayInformation date={variants.date} />
+          <GeneralInformation plantObject={selectedPlant} />
           <SoakInformation plantObject={selectedPlant} />
           <GermInformation plantObject={selectedPlant} />
           <GrowInformation plantObject={selectedPlant} />
@@ -82,8 +76,6 @@ const ModalContent = ({ variants }: ModalContentProps) => {
     } else {
       return (
         <>
-          Date: {variants.date}
-          <br />
           <GrowInformation plantObject={selectedPlant} />
         </>
       );

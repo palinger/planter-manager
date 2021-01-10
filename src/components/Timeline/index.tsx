@@ -57,11 +57,13 @@ const Timeline = () => {
             onDateChangeHandler(e);
           }}
         />
-        <Select
-          onChange={(selection: any) => onPlantChangeHandler(selection)}
-          isMulti
-          options={options}
-        />
+        <div className="selectWrapper">
+          <Select
+            onChange={(selection: any) => onPlantChangeHandler(selection)}
+            isMulti
+            options={options}
+          />
+        </div>
         <button
           onClick={() => {
             onClearHandler();
@@ -99,9 +101,15 @@ const Timeline = () => {
           })}
         </div>
       </div>
-      <Modal isOpen={state.modalState} contentLabel="Example Modal">
+      <Modal
+        ariaHideApp={false}
+        isOpen={state.modalState}
+        contentLabel="Example Modal"
+      >
         <ClearIcon className="clearIcon" onClick={closeModal} />
-        <ModalContent variants={state.modalSelection} />
+        <div className="modalContent">
+          <ModalContent variants={state.modalSelection} />
+        </div>
       </Modal>
     </div>
   );

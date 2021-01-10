@@ -1,6 +1,6 @@
 import React from "react";
 import TodayIcon from "@material-ui/icons/Today";
-import DateRangeIcon from "@material-ui/icons/DateRange";
+import MoreIcon from "@material-ui/icons/MoreHoriz";
 import { useAppContext } from "../../providers/context";
 
 interface PlantEventProps {
@@ -40,7 +40,7 @@ const PlantEvent = ({
   const renderIcon = (isFirstEvent: boolean, eventId: string, eventType: string) => {
     if (isFirstEvent) {
       return <TodayIcon onClick={(e) => getMoreOnEvent(e, eventId, type)} className="iconEvent"  />;
-    } else return <DateRangeIcon />;
+    } else return <MoreIcon />;
   };
 
   return (

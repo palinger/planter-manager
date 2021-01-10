@@ -5,7 +5,7 @@ export const plantData: PlantData[] = [
     id: "leak",
     plantName: "Porik",
     clean: {
-      time: "15min",
+      time: "15 min",
       solution: "3%",
     },
     planting: {
@@ -67,7 +67,7 @@ export const plantData: PlantData[] = [
     id: "redCabbage",
     plantName: "Red Cabbage",
     clean: {
-      time: "15min",
+      time: "15 min",
       solution: "3%",
     },
     planting: {
@@ -77,7 +77,7 @@ export const plantData: PlantData[] = [
     cycleData: {
       soak: {
         length: 1,
-        time: "30min",
+        time: "30 min",
         temp: "20 C",
       },
       germination: {
@@ -98,7 +98,7 @@ export const plantData: PlantData[] = [
     id: "brocolli",
     plantName: "Brokolica",
     clean: {
-      time: "15min",
+      time: "15 min",
       solution: "3%",
     },
     planting: {
@@ -108,7 +108,7 @@ export const plantData: PlantData[] = [
     cycleData: {
       soak: {
         length: 0,
-        time: "15min",
+        time: "15 min",
         temp: "20 C",
       },
       germination: {
@@ -129,7 +129,7 @@ export const plantData: PlantData[] = [
     id: "pakchoi",
     plantName: "Pak Choi",
     clean: {
-      time: "15min",
+      time: "15 min",
       solution: "3%",
     },
     planting: {
@@ -139,7 +139,7 @@ export const plantData: PlantData[] = [
     cycleData: {
       soak: {
         length: 0,
-        time: "15min",
+        time: "15 min",
         temp: "20 C",
       },
       germination: {
@@ -160,7 +160,7 @@ export const plantData: PlantData[] = [
     id: "radish",
     plantName: "Radish",
     clean: {
-      time: "15min",
+      time: "15 min",
       solution: "3%",
     },
     planting: {
@@ -170,7 +170,7 @@ export const plantData: PlantData[] = [
     cycleData: {
       soak: {
         length: 0,
-        time: "15min",
+        time: "15 min",
         temp: "20 C",
       },
       germination: {
@@ -191,7 +191,7 @@ export const plantData: PlantData[] = [
     id: "borax",
     plantName: "Borax",
     clean: {
-      time: "15min",
+      time: "15 min",
       solution: "3%",
     },
     planting: {
@@ -201,7 +201,7 @@ export const plantData: PlantData[] = [
     cycleData: {
       soak: {
         length: 0,
-        time: "15min",
+        time: "15 min",
         temp: "20 C",
       },
       germination: {
