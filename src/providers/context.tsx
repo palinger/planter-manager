@@ -20,9 +20,9 @@ const initialState: State = {
   modalSelection: {
     id: "",
     type: "",
-    date: ""
+    date: "",
   },
-  modalState: false
+  modalState: false,
 };
 
 const Context = React.createContext([
@@ -34,12 +34,14 @@ const Context = React.createContext([
 
 const ACTIONS = {
   SET_DATE: "SET_DATE",
-  CLEAR_DATE: "CLEAR_DATE",
+  // CLEAR_DATE: "CLEAR_DATE",
+  
   UPDATE_SELECTION: "UPDATE_SELECTION",
   ALL_SELECTION: "ALL_SELECTION",
   CLEAR_SELECTION: "CLEAR_SELECTION",
+
   SELECTED_MODAL_EVENT: "SELECTED_MODAL_EVENT",
-  SET_MODAL_STATE: "SET_MODAL_STATE"
+  SET_MODAL_STATE: "SET_MODAL_STATE",
 };
 
 export const reducer = (state: State, { type, payload }: any) => {
@@ -51,20 +53,20 @@ export const reducer = (state: State, { type, payload }: any) => {
       return { ...state, selection: payload };
 
     case "ALL_SELECTION":
-      return { ...state, selection: Object.keys(plantData) };
+      return { ...state, selection: payload };
 
-    case "CLEAR_DATE":
-      return { ...state, harvestDate: "payload" };
+    // case "CLEAR_DATE":
+    //   return { ...state, harvestDate: "payload" };
 
     case "SET_DATE":
       return { ...state, harvestDate: payload };
 
     case "SELECTED_MODAL_EVENT":
       return { ...state, modalSelection: payload };
-    
+
     case "SET_MODAL_STATE":
       return { ...state, modalState: payload };
-    
+
     default:
       return state;
   }

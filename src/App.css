@@ -1,3 +1,7 @@
+body {
+  background-color: lightgray;
+}
+
 .App {
 }
 
@@ -42,6 +46,14 @@
 .visualWrapper {
   display: flex;
   flex-direction: column;
+
+  min-height: 200px;
+  width: 840px;
+  border: 1px solid black;
+  margin: 0 auto;
+  padding: 8px;
+  background-color: white;
+  border-radius: 2px;
 }
 
 .dayNumbers {
@@ -64,5 +76,29 @@
 }
 
 .iconEvent:hover {
-  cursor: pointer
+  cursor: pointer;
+}
+
+.controls {
+  width: 840px;
+  border: 1px solid black;
+  margin: 24px auto;
+  padding: 8px;
+  background-color: white;
+  border-radius: 2px;
+}
+
+.controls label {
+  margin-bottom: 16px;
+  display: inline-block;
+  margin-right: 8px;
+}
+
+.controls button {
+  margin: 8px
+}
+
+.ReactModal__Content--after-open {
+  width: 300px;
+  margin: 0 auto;
 }

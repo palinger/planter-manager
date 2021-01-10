@@ -1,9 +1,9 @@
 import { PlantData, Options } from "./interface";
-
+export const plants = ["leak", "peas", "redCabbage", "brocolli", "pakchoi", "radish", "borax"];
 export const plantData: PlantData[] = [
   {
     id: "leak",
-    plantName: "porik",
+    plantName: "Porik",
     clean: {
       time: "15min",
       solution: "3%",
@@ -24,7 +24,7 @@ export const plantData: PlantData[] = [
         temp: "20 C",
       },
       grow: {
-        length: 3,
+        length: 6,
         lightCycle: "regular",
         waterCycle: "regular",
         ph: 6.6,
@@ -34,7 +34,7 @@ export const plantData: PlantData[] = [
   },
   {
     id: "peas",
-    plantName: "hrasok",
+    plantName: "Hrasok",
     clean: {
       time: "15min",
       solution: "3%",
@@ -55,7 +55,7 @@ export const plantData: PlantData[] = [
         temp: "22 C",
       },
       grow: {
-        length: 7,
+        length: 10,
         lightCycle: "regular",
         waterCycle: "regular",
         ph: 6.6,
@@ -65,7 +65,7 @@ export const plantData: PlantData[] = [
   },
   {
     id: "redCabbage",
-    plantName: "redCabbage",
+    plantName: "Red Cabbage",
     clean: {
       time: "15min",
       solution: "3%",
@@ -96,7 +96,7 @@ export const plantData: PlantData[] = [
   },
   {
     id: "brocolli",
-    plantName: "brokolica",
+    plantName: "Brokolica",
     clean: {
       time: "15min",
       solution: "3%",
@@ -125,6 +125,99 @@ export const plantData: PlantData[] = [
       },
     },
   },
+  {
+    id: "pakchoi",
+    plantName: "Pak Choi",
+    clean: {
+      time: "15min",
+      solution: "3%",
+    },
+    planting: {
+      seedWeight: 2.5,
+      unit: "kelimok",
+    },
+    cycleData: {
+      soak: {
+        length: 0,
+        time: "15min",
+        temp: "20 C",
+      },
+      germination: {
+        length: 1,
+        time: "24 hours",
+        temp: "20 C",
+      },
+      grow: {
+        length: 8,
+        lightCycle: "regular",
+        waterCycle: "regular",
+        ph: 6.6,
+        temp: "20 C",
+      },
+    },
+  },
+  {
+    id: "radish",
+    plantName: "Radish",
+    clean: {
+      time: "15min",
+      solution: "3%",
+    },
+    planting: {
+      seedWeight: 4.5,
+      unit: "kelimok",
+    },
+    cycleData: {
+      soak: {
+        length: 0,
+        time: "15min",
+        temp: "20 C",
+      },
+      germination: {
+        length: 2,
+        time: "48 hours",
+        temp: "20 C",
+      },
+      grow: {
+        length: 4,
+        lightCycle: "regular",
+        waterCycle: "regular",
+        ph: 6.6,
+        temp: "20 C",
+      },
+    },
+  },
+  {
+    id: "borax",
+    plantName: "Borax",
+    clean: {
+      time: "15min",
+      solution: "3%",
+    },
+    planting: {
+      seedWeight: 2.5,
+      unit: "kelimok",
+    },
+    cycleData: {
+      soak: {
+        length: 0,
+        time: "15min",
+        temp: "20 C",
+      },
+      germination: {
+        length: 1,
+        time: "24 hours",
+        temp: "20 C",
+      },
+      grow: {
+        length: 4,
+        lightCycle: "regular",
+        waterCycle: "regular",
+        ph: 6.6,
+        temp: "20 C",
+      },
+    },
+  },
 ];
 
 export const options: Options[] = [
@@ -133,7 +226,7 @@ export const options: Options[] = [
     value: "peas",
   },
   {
-    label: "porik",
+    label: "Porik",
     value: "leak",
   },
   {
@@ -141,7 +234,19 @@ export const options: Options[] = [
     value: "redCabbage",
   },
   {
-    label: "brocolica",
+    label: "Brocolica",
     value: "brocolli",
+  },
+  {
+    label: "Pak Choi",
+    value: "pakchoi",
+  },
+  {
+    label: "Radish",
+    value: "radish",
+  },
+  {
+    label: "Borax",
+    value: "borax",
   },
 ];

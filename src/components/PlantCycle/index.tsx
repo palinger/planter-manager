@@ -3,9 +3,6 @@ import PlantEvent from "../PlantEvent";
 import { plantData } from "../../providers/plantData";
 import moment from "moment";
 
-export type LightCycle = "regular" | "short" | "long";
-export type WaterCycle = "regular" | "short" | "long";
-
 interface PlantCycleProps {
   id: string;
   harvestDate: string;
@@ -28,7 +25,7 @@ const PlantCycle = ({ id, harvestDate }: PlantCycleProps) => {
         item.cycleData.germination.length +
         item.cycleData.grow.length);
     }
-    return null
+    return null;
   });
 
   plantData.map((item, index) => {
@@ -98,17 +95,15 @@ const PlantCycle = ({ id, harvestDate }: PlantCycleProps) => {
             />
           );
         });
-      return null
-    } else return null
+      return null;
+    } else return null;
   });
 
   return (
-    <>
-      <div className="plantCycle">
-        <h2>{id}</h2>
-        {cycles}
-      </div>
-    </>
+    <div className="plantCycle">
+      <h3>{id}</h3>
+      {cycles}
+    </div>
   );
 };
 

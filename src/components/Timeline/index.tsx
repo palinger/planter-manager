@@ -12,8 +12,8 @@ const Timeline = () => {
   const closeModal = () => {
     dispatch({
       type: ACTIONS.SET_MODAL_STATE,
-      payload: false
-    })
+      payload: false,
+    });
   };
 
   const onPlantChangeHandler = (selection: any) => {
@@ -40,38 +40,42 @@ const Timeline = () => {
   const onSelectAllHandler = () => {
     dispatch({
       type: ACTIONS.ALL_SELECTION,
-      payload: Object.keys(plantData),
+      payload: plantData.map((item) => item.id),
     });
   };
 
   return (
     <div className="timelineContainer">
-      <input
-        type="date"
-        value={state.harvestDate}
-        onChange={(e) => {
-          onDateChangeHandler(e);
-        }}
-      />
-      <Select
-        onChange={(selection: any) => onPlantChangeHandler(selection)}
-        isMulti
-        options={options}
-      />
-      <button
-        onClick={() => {
-          onClearHandler();
-        }}
-      >
-        Clear
-      </button>
-      <button
-        onClick={() => {
-          onSelectAllHandler();
-        }}
-      >
-        Sellect all
-      </button>
+      <div className="controls">
+        <label htmlFor="harverstDate">Harvest Date:</label>
+        <input
+          id="harvestDate"
+          type="date"
+          value={state.harvestDate}
+          onChange={(e) => {
+            onDateChangeHandler(e);
+          }}
+        />
+        <Select
+          onChange={(selection: any) => onPlantChangeHandler(selection)}
+          isMulti
+          options={options}
+        />
+        <button
+          onClick={() => {
+            onClearHandler();
+          }}
+        >
+          Clear
+        </button>
+        <button
+          onClick={() => {
+            onSelectAllHandler();
+          }}
+        >
+          Sellect all
+        </button>
+      </div>
       <div className="visualWrapper">
         <div className="dayNumbers">
           {new Array(20).fill(0).map((item: number, index: number) => {
