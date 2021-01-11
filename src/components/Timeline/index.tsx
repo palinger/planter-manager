@@ -2,11 +2,11 @@ import React from "react";
 import Select from "react-select";
 import Modal from "react-modal";
 import moment from "moment";
+import ClearIcon from "@material-ui/icons/Clear";
 import { useAppContext } from "../../providers/context";
 import { plantData, options } from "../../providers/plantData";
 import PlantCycle from "../PlantCycle";
 import ModalContent from "../ModalContent";
-import ClearIcon from "@material-ui/icons/Clear";
 import Legend from "../Legend";
 
 const Timeline = () => {
@@ -52,7 +52,17 @@ const Timeline = () => {
     let dm = d.subtract(days, "days");
     return dm.format("dd DD. MM.");
   };
-
+  
+  const calculateIsWeekend = (date: string, days: number) => {
+    let d = moment(new Date(date));
+    let dm = d.subtract(days, "days");
+    if (dm.format("dd") === "Sa" || dm.format("dd") === "Su") { 
+      return (days + 1) % 7 === 0 ? "seven weekend" : "weekend"
+    } else {
+      return (days + 1) % 7 === 0 ? "seven" : ""
+    }
+  };
+  calculateIsWeekend(state.harvestDate, 1)
   return (
     <div className="timelineContainer">
       <div className="controls">
@@ -92,9 +102,9 @@ const Timeline = () => {
       </div>
       <div className="visualWrapper">
         <div className="dayNumbers">
-          {new Array(20).fill(0).map((item: number, index: number) => {
+          {new Array(14).fill(0).map((item: number, index: number) => {
             return (
-              <div key={index} className={(index + 1) % 7 === 0 ? "seven" : ""}>
+              <div key={index} className={calculateIsWeekend(state.harvestDate, index)}>
                 {/* <div>{20 - index}</div> */}
                 <div>{calculateDates(state.harvestDate, index)}</div>
               </div>
