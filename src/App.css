@@ -5,7 +5,24 @@ body {
 }
 
 .App {
-  padding: 24px
+  padding: 24px;
+}
+
+.timelineContainer {
+  width: 100%;
+  border: 1px solid black;
+  border-radius: 2px;
+  background-color: white;
+}
+@media only screen and (min-width: 888px) {
+  .timelineContainer {
+    width: 840px;
+    margin: 0 auto;
+  }
+}
+
+.timelineContainer h1 {
+  text-align: center;
 }
 
 .plantCycle {
@@ -16,7 +33,7 @@ body {
 }
 
 .plantCycle h3 {
-  margin-right: 8px
+  margin-right: 8px;
 }
 
 .plantEventContainer {
@@ -51,21 +68,22 @@ body {
 }
 
 .selectWrapper {
-  width: 260px
+  width: 260px;
+}
+
+.overflowWrapper {
+  width: 100%;
+  overflow-x: scroll;
 }
 
 .visualWrapper {
   display: flex;
   flex-direction: column;
-  overflow: scroll;
   min-height: 200px;
   min-width: 588px;
   max-width: 840px;
-  border: 1px solid black;
   margin: 0 auto 24px;
   padding: 8px;
-  background-color: white;
-  border-radius: 2px;
 }
 
 .dayNumbers {
@@ -102,11 +120,20 @@ body {
   justify-content: space-between;
   min-width: 588px;
   max-width: 840px;
-  border: 1px solid black;
   margin: 24px auto;
   padding: 8px;
-  background-color: white;
-  border-radius: 2px;
+}
+
+@media only screen and (max-width: 600px) {
+  .controls {
+    flex-direction: column;
+    align-items: center;
+    min-width: auto;
+  }
+}
+
+.controls > div {
+  margin: 8px 0;
 }
 
 .controls label {
@@ -154,7 +181,7 @@ body {
   margin-right: 8px;
 }
 
-.clickable .plantEvent{
+.clickable .plantEvent {
   display: flex;
   align-items: center;
 }

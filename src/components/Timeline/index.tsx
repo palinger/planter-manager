@@ -52,19 +52,20 @@ const Timeline = () => {
     let dm = d.subtract(days, "days");
     return dm.format("dd DD. MM.");
   };
-  
+
   const calculateIsWeekend = (date: string, days: number) => {
     let d = moment(new Date(date));
     let dm = d.subtract(days, "days");
-    if (dm.format("dd") === "Sa" || dm.format("dd") === "Su") { 
-      return (days + 1) % 7 === 0 ? "seven weekend" : "weekend"
+    if (dm.format("dd") === "Sa" || dm.format("dd") === "Su") {
+      return (days + 1) % 7 === 0 ? "seven weekend" : "weekend";
     } else {
-      return (days + 1) % 7 === 0 ? "seven" : ""
+      return (days + 1) % 7 === 0 ? "seven" : "";
     }
   };
-  calculateIsWeekend(state.harvestDate, 1)
+  calculateIsWeekend(state.harvestDate, 1);
   return (
     <div className="timelineContainer">
+      <h1>MicroVeg</h1>
       <div className="controls">
         <div className="form">
           <label htmlFor="harverstDate">Harvest Date:</label>
@@ -100,39 +101,44 @@ const Timeline = () => {
         </div>
         <Legend />
       </div>
-      <div className="visualWrapper">
-        <div className="dayNumbers">
-          {new Array(14).fill(0).map((item: number, index: number) => {
-            return (
-              <div key={index} className={calculateIsWeekend(state.harvestDate, index)}>
-                {/* <div>{20 - index}</div> */}
-                <div>{calculateDates(state.harvestDate, index)}</div>
-              </div>
-            );
-          })}
+      <div className="overflowWrapper">
+        <div className="visualWrapper">
+          <div className="dayNumbers">
+            {new Array(14).fill(0).map((item: number, index: number) => {
+              return (
+                <div
+                  key={index}
+                  className={calculateIsWeekend(state.harvestDate, index)}
+                >
+                  {/* <div>{20 - index}</div> */}
+                  <div>{calculateDates(state.harvestDate, index)}</div>
+                </div>
+              );
+            })}
+          </div>
+          <div>
+            {state?.selection?.map((item: string, index: number) => {
+              return (
+                <PlantCycle
+                  key={index}
+                  id={item}
+                  harvestDate={state.harvestDate}
+                />
+              );
+            })}
+          </div>
         </div>
-        <div>
-          {state?.selection?.map((item: string, index: number) => {
-            return (
-              <PlantCycle
-                key={index}
-                id={item}
-                harvestDate={state.harvestDate}
-              />
-            );
-          })}
-        </div>
+        <Modal
+          ariaHideApp={false}
+          isOpen={state.modalState}
+          contentLabel="Example Modal"
+        >
+          <ClearIcon className="clearIcon" onClick={closeModal} />
+          <div className="modalContent">
+            <ModalContent variants={state.modalSelection} />
+          </div>
+        </Modal>
       </div>
-      <Modal
-        ariaHideApp={false}
-        isOpen={state.modalState}
-        contentLabel="Example Modal"
-      >
-        <ClearIcon className="clearIcon" onClick={closeModal} />
-        <div className="modalContent">
-          <ModalContent variants={state.modalSelection} />
-        </div>
-      </Modal>
     </div>
   );
 };
