@@ -41,7 +41,7 @@ const Legend = () => {
             <MoreIcon />
           </span>
         </div>
-        - Continuation events
+        - Continuation Events
       </div>
     </div>
   );

@@ -89,8 +89,8 @@ body {
 }
 
 .dayNumbers > div.weekend {
-  border-color: darkgreen;
-  color: darkgreen;
+  border-color: green;
+  color: green;
 }
 
 .iconEvent:hover {
