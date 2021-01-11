@@ -69,6 +69,7 @@ body {
 .dayNumbers {
   display: flex;
   justify-content: flex-end;
+  flex-direction: row-reverse;
 }
 
 .dayNumbers > div {
@@ -79,10 +80,11 @@ body {
   text-align: center;
   display: flex;
   justify-content: center;
+  background-color: whitesmoke;
 }
 
-.seven {
-  background-color: whitesmoke;
+.dayNumbers > div.seven {
+  background-color: lightgray;
 }
 
 .iconEvent:hover {
