@@ -1,9 +1,10 @@
 import React from "react";
 import Select from "react-select";
+import Modal from "react-modal";
+import moment from "moment";
 import { useAppContext } from "../../providers/context";
 import { plantData, options } from "../../providers/plantData";
 import PlantCycle from "../PlantCycle";
-import Modal from "react-modal";
 import ModalContent from "../ModalContent";
 import ClearIcon from "@material-ui/icons/Clear";
 
@@ -45,6 +46,14 @@ const Timeline = () => {
     });
   };
 
+  const calculateDates = (date: string, days: number) => {
+    console.log(date);
+    console.log(days);
+    let d = moment(new Date(date));
+    let dm = d.subtract(days, "days");
+    return dm.format("dd DD. MM.");
+  };
+
   return (
     <div className="timelineContainer">
       <div className="controls">
@@ -84,7 +93,8 @@ const Timeline = () => {
           {new Array(20).fill(0).map((item: number, index: number) => {
             return (
               <div key={index} className={(index + 1) % 7 === 0 ? "seven" : ""}>
-                <div>{20 - index}</div>
+                {/* <div>{20 - index}</div> */}
+                <div>{calculateDates(state.harvestDate, index)}</div>
               </div>
             );
           })}

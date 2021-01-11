@@ -14,7 +14,7 @@ const PlantCycle = ({ id, harvestDate }: PlantCycleProps) => {
 
   const calculateDates = (date: any, days: number) => {
     let d = moment(new Date(date));
-    let dm = d.subtract(days, "days");
+    let dm = d.subtract(days - 1, "days");
     return dm.format("ddd, MMM Do YYYY");
   };
 

@@ -1,5 +1,4 @@
 import React, { useContext, useReducer } from "react";
-import { plantData } from "../providers/plantData";
 
 export type ModalSelection = {
   id: string;
