@@ -11,6 +11,7 @@ interface PlantCycleProps {
 const PlantCycle = ({ id, harvestDate }: PlantCycleProps) => {
   let totalGrowDays: number = 0;
   let cycles: any = [];
+  let name: string = "";
 
   const calculateDates = (date: any, days: number) => {
     let d = moment(new Date(date));
@@ -99,9 +100,16 @@ const PlantCycle = ({ id, harvestDate }: PlantCycleProps) => {
     } else return null;
   });
 
+  plantData.map((item) => {
+    if (item.id === id) {
+      name = item.plantName;
+    }
+    return null
+  });
+
   return (
     <div className="plantCycle">
-      <h3>{id}</h3>
+      <h3>{name}</h3>
       {cycles}
     </div>
   );

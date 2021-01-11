@@ -3,7 +3,7 @@ export const plants = ["leak", "peas", "redCabbage", "brocolli", "pakchoi", "rad
 export const plantData: PlantData[] = [
   {
     id: "leak",
-    plantName: "Porik",
+    plantName: "Pórik",
     clean: {
       time: "15 min",
       solution: "3%",
@@ -34,7 +34,7 @@ export const plantData: PlantData[] = [
   },
   {
     id: "peas",
-    plantName: "Hrasok",
+    plantName: "Hrášok",
     clean: {
       time: "15min",
       solution: "3%",
@@ -65,7 +65,7 @@ export const plantData: PlantData[] = [
   },
   {
     id: "redCabbage",
-    plantName: "Red Cabbage",
+    plantName: "Červená kapusta",
     clean: {
       time: "15 min",
       solution: "3%",
@@ -158,7 +158,7 @@ export const plantData: PlantData[] = [
   },
   {
     id: "radish",
-    plantName: "Radish",
+    plantName: "Reďkovka",
     clean: {
       time: "15 min",
       solution: "3%",
@@ -189,7 +189,7 @@ export const plantData: PlantData[] = [
   },
   {
     id: "borax",
-    plantName: "Borax",
+    plantName: "Borák",
     clean: {
       time: "15 min",
       solution: "3%",
@@ -222,19 +222,19 @@ export const plantData: PlantData[] = [
 
 export const options: Options[] = [
   {
-    label: "hrasok",
+    label: "Hrášok",
     value: "peas",
   },
   {
-    label: "Porik",
+    label: "Pórik",
     value: "leak",
   },
   {
-    label: "Cervena kapusta",
+    label: "Červená kapusta",
     value: "redCabbage",
   },
   {
-    label: "Brocolica",
+    label: "Brokolica",
     value: "brocolli",
   },
   {
@@ -242,11 +242,11 @@ export const options: Options[] = [
     value: "pakchoi",
   },
   {
-    label: "Radish",
+    label: "Reďkovka",
     value: "radish",
   },
   {
-    label: "Borax",
+    label: "Borák",
     value: "borax",
   },
 ];
