@@ -92,6 +92,8 @@ body {
 }
 
 .controls {
+  display: flex;
+  justify-content: space-between;
   max-width: 840px;
   border: 1px solid black;
   margin: 24px auto;
@@ -143,4 +145,14 @@ body {
 
 .modalBox p svg {
   margin-right: 8px;
+}
+
+.clickable .plantEvent{
+  display: flex;
+  align-items: center;
+}
+
+.nonClickable {
+  display: flex;
+  align-items: center;
 }

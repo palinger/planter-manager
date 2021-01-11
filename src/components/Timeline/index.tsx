@@ -7,6 +7,7 @@ import { plantData, options } from "../../providers/plantData";
 import PlantCycle from "../PlantCycle";
 import ModalContent from "../ModalContent";
 import ClearIcon from "@material-ui/icons/Clear";
+import Legend from "../Legend";
 
 const Timeline = () => {
   const { state, dispatch, ACTIONS }: any = useAppContext();
@@ -47,8 +48,6 @@ const Timeline = () => {
   };
 
   const calculateDates = (date: string, days: number) => {
-    console.log(date);
-    console.log(days);
     let d = moment(new Date(date));
     let dm = d.subtract(days, "days");
     return dm.format("dd DD. MM.");
@@ -57,36 +56,39 @@ const Timeline = () => {
   return (
     <div className="timelineContainer">
       <div className="controls">
-        <label htmlFor="harverstDate">Harvest Date:</label>
-        <input
-          id="harvestDate"
-          type="date"
-          value={state.harvestDate}
-          onChange={(e) => {
-            onDateChangeHandler(e);
-          }}
-        />
-        <div className="selectWrapper">
-          <Select
-            onChange={(selection: any) => onPlantChangeHandler(selection)}
-            isMulti
-            options={options}
+        <div className="form">
+          <label htmlFor="harverstDate">Harvest Date:</label>
+          <input
+            id="harvestDate"
+            type="date"
+            value={state.harvestDate}
+            onChange={(e) => {
+              onDateChangeHandler(e);
+            }}
           />
+          <div className="selectWrapper">
+            <Select
+              onChange={(selection: any) => onPlantChangeHandler(selection)}
+              isMulti
+              options={options}
+            />
+          </div>
+          <button
+            onClick={() => {
+              onClearHandler();
+            }}
+          >
+            Clear
+          </button>
+          <button
+            onClick={() => {
+              onSelectAllHandler();
+            }}
+          >
+            Sellect all
+          </button>
         </div>
-        <button
-          onClick={() => {
-            onClearHandler();
-          }}
-        >
-          Clear
-        </button>
-        <button
-          onClick={() => {
-            onSelectAllHandler();
-          }}
-        >
-          Sellect all
-        </button>
+        <Legend />
       </div>
       <div className="visualWrapper">
         <div className="dayNumbers">
