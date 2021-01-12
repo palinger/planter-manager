@@ -21,7 +21,7 @@ body {
   }
 }
 
-.timelineContainer h1, 
+.timelineContainer h1,
 .timelineContainer small {
   text-align: center;
   margin-bottom: 0;
@@ -148,9 +148,9 @@ body {
   font-weight: bold;
 }
 
-.controls .input {
+.controls input {
   padding: 4px;
-    font-size: large;
+  font-size: large;
 }
 
 .controls button {
