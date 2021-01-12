@@ -21,8 +21,13 @@ body {
   }
 }
 
-.timelineContainer h1 {
+.timelineContainer h1, 
+.timelineContainer small {
   text-align: center;
+  margin-bottom: 0;
+  width: 100%;
+  display: block;
+  color: forestgreen;
 }
 
 .plantCycle {
@@ -68,7 +73,7 @@ body {
 }
 
 .selectWrapper {
-  width: 260px;
+  width: 296px;
 }
 
 .overflowWrapper {
@@ -121,7 +126,7 @@ body {
   min-width: 588px;
   max-width: 840px;
   margin: 24px auto;
-  padding: 8px;
+  padding: 0 16px;
 }
 
 @media only screen and (max-width: 600px) {
@@ -137,13 +142,21 @@ body {
 }
 
 .controls label {
-  margin-bottom: 16px;
+  margin-bottom: 24px;
   display: inline-block;
   margin-right: 8px;
+  font-weight: bold;
+}
+
+.controls .input {
+  padding: 4px;
+    font-size: large;
 }
 
 .controls button {
-  margin: 8px 8px 8px 0px;
+  margin: 16px 16px 16px 0px;
+  padding: 4px;
+  font-size: medium;
 }
 
 .ReactModal__Content--after-open {

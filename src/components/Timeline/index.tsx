@@ -65,7 +65,9 @@ const Timeline = () => {
   calculateIsWeekend(state.harvestDate, 1);
   return (
     <div className="timelineContainer">
-      <h1>MicroVeg</h1>
+      <h1>MicroVeg
+      </h1>
+      <small>Planter Manager</small>
       <div className="controls">
         <div className="form">
           <label htmlFor="harverstDate">Harvest Date:</label>
