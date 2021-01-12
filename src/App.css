@@ -13,6 +13,7 @@ body {
   border: 1px solid black;
   border-radius: 2px;
   background-color: white;
+  padding-top: 24px;
 }
 @media only screen and (min-width: 888px) {
   .timelineContainer {
@@ -21,10 +22,25 @@ body {
   }
 }
 
-.timelineContainer h1,
+.timelineContainer > span {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+}
+
+.timelineContainer > span svg {
+  width: 35px;
+  margin-right: 8px;
+}
+
+.timelineContainer h1 {
+  text-align: center;
+  margin: 0;
+  color: forestgreen;
+}
 .timelineContainer small {
   text-align: center;
-  margin-bottom: 0;
   width: 100%;
   display: block;
   color: forestgreen;

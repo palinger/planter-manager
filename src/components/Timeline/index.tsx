@@ -8,7 +8,7 @@ import { plantData, options } from "../../providers/plantData";
 import PlantCycle from "../PlantCycle";
 import ModalContent from "../ModalContent";
 import Legend from "../Legend";
-
+import { ReactComponent as Logo } from "../../logo-green.svg";
 const Timeline = () => {
   const { state, dispatch, ACTIONS }: any = useAppContext();
 
@@ -65,8 +65,10 @@ const Timeline = () => {
   calculateIsWeekend(state.harvestDate, 1);
   return (
     <div className="timelineContainer">
-      <h1>MicroVeg
-      </h1>
+      <span>
+        <Logo className="logo" />
+        <h1>MicroVeg</h1>
+      </span>
       <small>Planter Manager</small>
       <div className="controls">
         <div className="form">
