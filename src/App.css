@@ -15,6 +15,7 @@ body {
   background-color: white;
   padding-top: 24px;
 }
+
 @media only screen and (min-width: 888px) {
   .timelineContainer {
     width: 840px;
@@ -178,6 +179,11 @@ body {
 .ReactModal__Content--after-open {
   width: 300px;
   margin: 0 auto;
+}
+@media only screen and (max-width: 600px) {
+  .ReactModal__Content--after-open {
+    width: auto;
+  }
 }
 
 .clearIcon {
