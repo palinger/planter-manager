@@ -1,15 +1,20 @@
 import React from "react";
+import Live from "./components/Live";
 import Timeline from "./components/Timeline";
-import { ContextProvider } from "./providers/context";
+import { AppContextProvider } from "./providers/context";
+import { LiveContextProvider } from "./providers/liveContext";
 import "./App.css";
 
 function App() {
   return (
-    <ContextProvider>
-      <div className="App">
+    <div className="App">
+      {/* <LiveContextProvider>
+        <Live />
+      </LiveContextProvider> */}
+      <AppContextProvider>
         <Timeline />
-      </div>
-    </ContextProvider>
+      </AppContextProvider>
+    </div>
   );
 }
 

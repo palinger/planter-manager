@@ -71,7 +71,7 @@ export const reducer = (state: State, { type, payload }: any) => {
   }
 };
 
-export const ContextProvider = (props: any) => {
+export const AppContextProvider = (props: any) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   return (
     <Context.Provider value={[state, dispatch]}>
