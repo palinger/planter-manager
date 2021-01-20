@@ -49,7 +49,7 @@ body {
 
 .plantCycle {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   justify-content: flex-end;
   align-items: center;
 }
@@ -102,7 +102,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 200px;
-  min-width: 588px;
+  min-width: 680px;
   max-width: 840px;
   margin: 0 auto 24px;
   padding: 8px;
@@ -146,7 +146,7 @@ body {
   padding: 0 16px;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 735px) {
   .controls {
     flex-direction: column;
     align-items: center;
@@ -224,4 +224,80 @@ body {
 .nonClickable {
   display: flex;
   align-items: center;
+}
+
+/* LIVE */
+
+.liveContainer {
+  width: 100%;
+  border: 1px solid black;
+  border-radius: 2px;
+  background-color: rgba(255, 255, 255, 0.9);
+
+  padding: 24px 0;
+  margin-bottom: 24px;
+}
+
+@media only screen and (min-width: 888px) {
+  .liveContainer {
+    width: 840px;
+    margin: 0 auto;
+  }
+}
+
+.liveFormWrapper {
+  padding: 24px;
+}
+
+.liveFormWrapper button {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.plantRow {
+  width: 100%;
+  padding: 16px 0;
+  display: flex;
+  justify-content: start;
+  flex-wrap: wrap;
+}
+
+.plantRow label {
+  padding-right: 24px;
+}
+
+.plantRow input,
+.plantRow select {
+  margin-left: 8px;
+  padding: 4px;
+}
+
+.addNewRow {
+}
+
+.submitSelection {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.liveWrapper {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.liveUnit {
+  background: rgb(34, 193, 195);
+  background: linear-gradient(
+    0deg,
+    rgba(34, 193, 195, 1) 0%,
+    rgba(136, 238, 137, 1) 100%
+  );
+  border: 1px solid gray;
+  border-radius: 3px;
+  padding: 8px 4px;
+  margin-bottom: 4px;
+  cursor: pointer;
 }

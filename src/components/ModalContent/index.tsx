@@ -40,7 +40,6 @@ const ModalContent = ({ variants }: ModalContentProps) => {
         <>
           <DayInformation date={variants.date} />
           <GeneralInformation plantObject={selectedPlant} />
-          <SoakInformation plantObject={selectedPlant} />
           <GermInformation plantObject={selectedPlant} />
         </>
       );
@@ -58,7 +57,6 @@ const ModalContent = ({ variants }: ModalContentProps) => {
       return (
         <>
           <DayInformation date={variants.date} />
-          <SoakInformation plantObject={selectedPlant} />
           <GrowInformation plantObject={selectedPlant} />
         </>
       );

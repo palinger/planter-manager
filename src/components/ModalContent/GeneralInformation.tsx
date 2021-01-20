@@ -18,7 +18,7 @@ const GeneralInformation = ({ plantObject }: ContentProps) => {
         <hr />
         <h3>Planting </h3>
         <p>
-          <WeightIcon /> Seed weight: {plantObject.planting.seedWeight}
+          <WeightIcon /> Seed weight: {plantObject.planting.seedWeight}g
         </p>
         <p>
           <PerIcon /> Unit: {plantObject.planting.unit}

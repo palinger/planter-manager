@@ -108,7 +108,7 @@ const Timeline = () => {
       <div className="overflowWrapper">
         <div className="visualWrapper">
           <div className="dayNumbers">
-            {new Array(14).fill(0).map((item: number, index: number) => {
+            {new Array(16).fill(0).map((item: number, index: number) => {
               return (
                 <div
                   key={index}

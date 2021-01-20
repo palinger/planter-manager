@@ -9,22 +9,22 @@ export const plantData: PlantData[] = [
       solution: "3%",
     },
     planting: {
-      seedWeight: 4.5,
+      seedWeight: 3.5,
       unit: "kelimok",
     },
     cycleData: {
       soak: {
-        length: 0,
-        time: "30 mins",
-        temp: "20 C",
-      },
-      germination: {
         length: 1,
         time: "24 hours",
         temp: "20 C",
       },
+      germination: {
+        length: 3,
+        time: "3 days",
+        temp: "20 C",
+      },
       grow: {
-        length: 6,
+        length: 11,
         lightCycle: "regular",
         waterCycle: "regular",
         ph: 6.6,
@@ -40,22 +40,22 @@ export const plantData: PlantData[] = [
       solution: "3%",
     },
     planting: {
-      seedWeight: 5.5,
+      seedWeight: 7.5,
       unit: "kelimok",
     },
     cycleData: {
       soak: {
-        length: 2,
-        time: "48 hours",
+        length: 1,
+        time: "24 hours",
         temp: "22 C",
       },
       germination: {
-        length: 0,
-        time: "1 hour",
+        length: 2,
+        time: "2 days",
         temp: "22 C",
       },
       grow: {
-        length: 10,
+        length: 12,
         lightCycle: "regular",
         waterCycle: "regular",
         ph: 6.6,
@@ -71,22 +71,22 @@ export const plantData: PlantData[] = [
       solution: "3%",
     },
     planting: {
-      seedWeight: 5.5,
+      seedWeight: 3,
       unit: "kelimok",
     },
     cycleData: {
       soak: {
-        length: 1,
-        time: "30 min",
+        length: 0,
+        time: "none",
         temp: "20 C",
       },
       germination: {
-        length: 1,
-        time: "24 hours",
+        length: 3,
+        time: "3 days",
         temp: "20 C",
       },
       grow: {
-        length: 8,
+        length: 7,
         lightCycle: "regular",
         waterCycle: "regular",
         ph: 6.6,
@@ -102,22 +102,22 @@ export const plantData: PlantData[] = [
       solution: "3%",
     },
     planting: {
-      seedWeight: 2.5,
+      seedWeight: 2.3,
       unit: "kelimok",
     },
     cycleData: {
       soak: {
         length: 0,
-        time: "15 min",
+        time: "none",
         temp: "20 C",
       },
       germination: {
-        length: 0,
-        time: "30 min",
+        length: 2,
+        time: "2 days",
         temp: "20 C",
       },
       grow: {
-        length: 4,
+        length: 7,
         lightCycle: "regular",
         waterCycle: "regular",
         ph: 6.6,
@@ -133,22 +133,22 @@ export const plantData: PlantData[] = [
       solution: "3%",
     },
     planting: {
-      seedWeight: 2.5,
+      seedWeight: 3,
       unit: "kelimok",
     },
     cycleData: {
       soak: {
         length: 0,
-        time: "15 min",
+        time: "none",
         temp: "20 C",
       },
       germination: {
-        length: 1,
-        time: "24 hours",
+        length: 3,
+        time: "3 days",
         temp: "20 C",
       },
       grow: {
-        length: 8,
+        length: 7,
         lightCycle: "regular",
         waterCycle: "regular",
         ph: 6.6,
@@ -158,28 +158,28 @@ export const plantData: PlantData[] = [
   },
   {
     id: "radish",
-    plantName: "Reďkovka",
+    plantName: "Reďkovka - Rambo",
     clean: {
       time: "15 min",
       solution: "3%",
     },
     planting: {
-      seedWeight: 4.5,
+      seedWeight: 4,
       unit: "kelimok",
     },
     cycleData: {
       soak: {
         length: 0,
-        time: "15 min",
+        time: "none",
         temp: "20 C",
       },
       germination: {
-        length: 2,
-        time: "48 hours",
+        length: 3,
+        time: "3 days",
         temp: "20 C",
       },
       grow: {
-        length: 4,
+        length: 6,
         lightCycle: "regular",
         waterCycle: "regular",
         ph: 6.6,
@@ -195,22 +195,22 @@ export const plantData: PlantData[] = [
       solution: "3%",
     },
     planting: {
-      seedWeight: 2.5,
+      seedWeight: 3.5,
       unit: "kelimok",
     },
     cycleData: {
       soak: {
-        length: 0,
-        time: "15 min",
+        length: 2,
+        time: "2 days",
         temp: "20 C",
       },
       germination: {
-        length: 1,
-        time: "24 hours",
+        length: 4,
+        time: "4 days",
         temp: "20 C",
       },
       grow: {
-        length: 4,
+        length: 9,
         lightCycle: "regular",
         waterCycle: "regular",
         ph: 6.6,
