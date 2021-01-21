@@ -1,68 +1,50 @@
-import React, { useState, useEffect } from "react";
-import { plantData } from "../../providers/plantData";
-import DayIcon from "@material-ui/icons/Today";
-import { useLiveContext } from "../../providers/liveContext";
+import React, { useEffect, useState } from "react";
+import { plantData, nameMap } from "../../providers/plantData";
+import { PlantData } from "../../providers/interface";
+// import DayIcon from "@material-ui/icons/Today";
+import moment from "moment";
+import { useLiveContext, LiveUnit } from "../../providers/liveContext";
 
+interface LiveUnitRowProps {
+  date: string;
+  id: string;
+}
 
-// interface DayInformationProps {
-//   date: string
-// }
+const LiveUnitRow = ({ id, date }: LiveUnitRowProps) => {
+  const { dispatch, ACTIONS }: any = useLiveContext();
 
-const LiveUnitRow = () => {
-  const [rowState, setRowState] = useState({});
-  const [stateName, setStateName] = useState("peas");
-  const [stateValue, setStateValue] = useState(0);
-  const {dispatch, ACTIONS }: any = useLiveContext();
-
-  useEffect(() => {
-    dispatch({
-      type: ACTIONS.PLANTING,
-      payload: rowState
-    }) 
-  }, [rowState, ACTIONS.PLANTING, dispatch]);
-
-  const updateSelection = (e: any) => {
-    setStateName(e.target.value);
-    setRowState({
-      id: e.target.value,
-      number: stateValue
-    });
+  const calculateDates = (dateString: string, days: number) => {
+    let d = moment(new Date(dateString));
+    let dm = d.add(days, "days");
+    return dm.format("dd DD. MM.");
   };
 
-  const onNumberInputChange = (e: any) => {
-    setStateValue(e.target.value);
-    setRowState({
-      id: stateName,
-      number: e.target.value
+  let growDays: number = 0;
+
+  plantData.map((item) => {
+    if (item.id === id) {
+      growDays = item.cycleData.grow.length;
+    }
+  });
+
+  const updateSelection = (e: any) => {
+    dispatch({
+      type: ACTIONS.PLANTING,
+      payload: {
+        id: id,
+        number: parseInt(e.target.value, 10),
+        date: {
+          plantingDate: calculateDates(date, 0), // just to format
+          harvestDate: calculateDates(date, growDays),
+        },
+      },
     });
   };
 
   return (
     <div className="plantRow">
-      <label>
-        Select plant:
-        <select
-          onChange={(e) => {
-            updateSelection(e);
-          }}
-          value={stateName}
-        >
-          {plantData.map((plantItem, index) => (
-            <option key={index} value={plantItem.id}>
-              {plantItem.plantName}
-            </option>
-          ))}
-        </select>
-      </label>
-      <label>
-        Units:
-        <input
-          id={stateName}
-          onChange={(e) => onNumberInputChange(e)}
-          type="number"
-          value={stateValue}
-        />
-      </label>
+      <label htmlFor={id}>{nameMap[id]}</label>
+      <input id={id} onChange={(e) => updateSelection(e)} type="number" />
     </div>
   );
 };

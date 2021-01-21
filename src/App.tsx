@@ -8,12 +8,12 @@ import "./App.css";
 function App() {
   return (
     <div className="App">
-      {/* <LiveContextProvider>
-        <Live />
-      </LiveContextProvider> */}
       <AppContextProvider>
         <Timeline />
       </AppContextProvider>
+      <LiveContextProvider>
+        <Live />
+      </LiveContextProvider>
     </div>
   );
 }

@@ -1,18 +1,14 @@
 import React from "react";
 import TodayIcon from "@material-ui/icons/Today";
-import MoreIcon from "@material-ui/icons/MoreHoriz";
+import EcoIcon from "@material-ui/icons/Eco";
 import { useLiveContext } from "../../providers/liveContext";
 
-// interface LiveProps {
-//   length: number;
-//   plantName: string;
-//   calculatedDate: string;
-//   id: string;
-//   type: "soak" | "germination" | "grow";
-//   isFirst: boolean;
-// }
+interface LiveProps {
+  plantName: string;
+  id: string;
+}
 
-const LiveUnit = () => {
+const LiveUnit = ({ id, plantName}:LiveProps) => {
   const { dispatch, ACTIONS }: any = useLiveContext();
 
   const getMoreOnEvent = (e: any, eventId: string, eventType: string) => {
@@ -32,7 +28,8 @@ const LiveUnit = () => {
 
   return (
     <div className="liveUnit">
-      <span className="type">hello</span>
+      <EcoIcon />
+      {/* <span>{plantName}</span> */}
     </div>
   );
 };

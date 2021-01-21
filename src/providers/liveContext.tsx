@@ -1,4 +1,6 @@
 import React, { useContext, useReducer } from "react";
+import moment from "moment";
+import { plantData } from "./plantData";
 
 export type LiveDate = {
   plantingDate: string;
@@ -18,39 +20,26 @@ export type LiveUnit = {
 
 export type State = {
   trayContent: LiveUnit[];
-  harvestDate: string;
+  plantingDate: string;
   modalSelection: ModalSelection;
   modalState: boolean;
+  capacity: number;
+  total: number;
 };
 
 const initialState: State = {
-  trayContent: [
-    {
-      id: "radish",
-      date: {
-        plantingDate: "2021-01-01",
-        harvestDate: "2021-01-01",
-      },
-      amount: 0,
-    },
-    {
-      id: "peas",
-      date: {
-        plantingDate: "2021-01-01",
-        harvestDate: "2021-01-01",
-      },
-      amount: 0,
-    },
-  ],
-  harvestDate: "2021-01-01",
+  trayContent: [],
+  plantingDate: "2021-01-01",
   modalSelection: {
     id: "",
     date: {
-      harvestDate: "",
       plantingDate: "",
+      harvestDate: "",
     },
   },
   modalState: false,
+  capacity: 60,
+  total: 0,
 };
 
 const Context = React.createContext([
@@ -62,6 +51,7 @@ const Context = React.createContext([
 
 const ACTIONS = {
   PLANTING: "PLANTING",
+  SET_DATE: "SET_DATE",
   CLEAR_TRAY: "CLEAR_TRAY",
 
   SELECTED_MODAL_EVENT: "SELECTED_MODAL_EVENT",
@@ -71,29 +61,38 @@ const ACTIONS = {
 export const reducer = (state: State, { type, payload }: any) => {
   switch (type) {
     case "PLANTING":
-      console.log("payload: ", payload);
-      const isAlready = (element: LiveUnit) => element.id === payload.id;
-      
-      console.log("'some' check: ",state.trayContent.some(isAlready));
+      console.log("incoming payload: ", payload);
+      console.log("trayContent start: ", state.trayContent);
 
-      const newItem = {
+      const newItem: LiveUnit = {
         id: payload.id,
-        date: {
-          plantingDate: "2021-01-01",
-          harvestDate: "2021-01-01",
-        },
+        date: payload.date,
         amount: payload.number,
       };
 
-      let updated = state.trayContent.map((item) => {
+      const updated: LiveUnit[] = state.trayContent.map((item) => {
         if (item.id === payload.id) {
-          item.amount = parseInt(payload.number, 10);
+          return newItem;
         } else return item;
       });
 
-      console.log("updated: ", updated);
+      const isAlready = (element: LiveUnit) => element.id === payload.id;
 
-      return { ...state, trayContent: updated };
+      const final = {
+        ...state,
+        trayContent: state.trayContent.some(isAlready)
+          ? updated
+          : [...state.trayContent, newItem],
+      };
+
+      let calculatedTotal: number = 0;
+      final.trayContent.map(
+        (item) => (calculatedTotal = calculatedTotal + item.amount)
+      );
+      return { ...final, total: calculatedTotal };
+
+    case "SET_DATE":
+      return { ...state, plantingDate: payload };
 
     case "CLEAR_TRAY":
       return { ...state, trayContent: payload };

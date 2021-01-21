@@ -250,3 +250,17 @@ export const options: Options[] = [
     value: "borax",
   },
 ];
+
+export type NameMap = {
+  [name: string]: string
+};
+
+export const nameMap: NameMap = {
+  peas: "Hrášok",
+  leak: "Pórik",
+  redCabbage: "Červená kapusta",
+  brocolli: "Brokolica",
+  pakchoi: "Pak Choi",
+  radish:"Reďkovka",
+  borax: "Borák",
+}

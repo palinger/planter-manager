@@ -71,31 +71,19 @@ body {
 .soak {
   /* background-color: #cddc39; */
   background: rgb(0, 179, 181);
-  background: linear-gradient(
-    0deg,
-    #cddc39,
-    #f2ff7e
-  );
+  background: linear-gradient(0deg, #cddc39, #f2ff7e);
 }
 
 .germination {
   /* background-color: #8bc34a; */
   background: rgb(181, 159, 0);
-  background: linear-gradient(
-    0deg,
-    #8bc34a,
-    #d0ff9b
-  );
+  background: linear-gradient(0deg, #8bc34a, #d0ff9b);
 }
 
 .grow {
   /* background-color: #4caf50; */
   background: rgb(0, 181, 19);
-  background: linear-gradient(
-    0deg,
-    #4caf50,
-    #88eb8b
-  );
+  background: linear-gradient(0deg, #4caf50, #88eb8b);
 }
 
 .soak,
@@ -254,14 +242,15 @@ body {
   border-radius: 2px;
   background-color: rgba(255, 255, 255, 0.9);
 
-  padding: 24px 0;
+  padding: 0 0 24px;
+  margin-top: 24px;
   margin-bottom: 24px;
 }
 
 @media only screen and (min-width: 888px) {
   .liveContainer {
     width: 840px;
-    margin: 0 auto;
+    margin: 24px auto;
   }
 }
 
@@ -281,20 +270,18 @@ body {
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
+  align-items: center;
+  padding-bottom: 8px;
 }
 
 .plantRow label {
   padding-right: 24px;
-  padding-bottom: 8px;
+  width: 75px;
 }
 
-.plantRow input,
-.plantRow select {
-  margin-left: 8px;
-  padding: 4px;
-}
-
-.addNewRow {
+.plantRow input {
+  padding: 8px;
+  width: 60px;
 }
 
 .submitSelection {
@@ -302,8 +289,28 @@ body {
   justify-content: flex-end;
 }
 
+.liveControl {
+  display: flex;
+  align-items: center;
+  padding-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.liveControlItem {
+  width: 295px;
+  margin-bottom: 16px;
+}
+
+.liveControlItem label {
+  padding-right: 24px;
+}
+
+.liveControlItem input {
+  margin-left: 8px;
+  padding: 4px;
+}
 .liveWrapper {
-  width: 100%;
+  padding: 24px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
@@ -321,4 +328,10 @@ body {
   padding: 8px 4px;
   margin-bottom: 4px;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.liveUnit span {
+  font-size: 12px;
 }
