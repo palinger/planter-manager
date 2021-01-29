@@ -8,9 +8,9 @@ import "./App.css";
 function App() {
   return (
     <div className="App">
-      {/* <AppContextProvider>
+      <AppContextProvider>
         <Timeline />
-      </AppContextProvider> */}
+      </AppContextProvider>
       <LiveContextProvider>
         <Live />
       </LiveContextProvider>
