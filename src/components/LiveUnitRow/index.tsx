@@ -3,7 +3,7 @@ import { plantData, nameMap } from "../../providers/plantData";
 import { PlantData } from "../../providers/interface";
 // import DayIcon from "@material-ui/icons/Today";
 import moment from "moment";
-import { useLiveContext, LiveUnit } from "../../providers/liveContext";
+import { useLiveContext, LiveUnitType } from "../../providers/liveContext";
 
 interface LiveUnitRowProps {
   date: string;
@@ -44,7 +44,7 @@ const LiveUnitRow = ({ id, date }: LiveUnitRowProps) => {
   return (
     <div className="plantRow">
       <label htmlFor={id}>{nameMap[id]}</label>
-      <input id={id} onChange={(e) => updateSelection(e)} type="number" />
+      <input min={1} id={id} onChange={(e) => updateSelection(e)} type="number" />
     </div>
   );
 };

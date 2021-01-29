@@ -12,14 +12,14 @@ export type ModalSelection = {
   date: LiveDate;
 };
 
-export type LiveUnit = {
+export type LiveUnitType = {
   id: string;
   date: LiveDate;
   amount: number;
 };
 
 export type State = {
-  trayContent: LiveUnit[];
+  trayContent: LiveUnitType[];
   plantingDate: string;
   modalSelection: ModalSelection;
   modalState: boolean;
@@ -51,6 +51,9 @@ const Context = React.createContext([
 
 const ACTIONS = {
   PLANTING: "PLANTING",
+  REMOVE_PLANTING_ITEM: "REMOVE_PLANTING_ITEM",
+  CLEAR_PLANTING: "CLEAR_PLANTING",
+
   SET_DATE: "SET_DATE",
   CLEAR_TRAY: "CLEAR_TRAY",
 
@@ -61,22 +64,19 @@ const ACTIONS = {
 export const reducer = (state: State, { type, payload }: any) => {
   switch (type) {
     case "PLANTING":
-      console.log("incoming payload: ", payload);
-      console.log("trayContent start: ", state.trayContent);
-
-      const newItem: LiveUnit = {
+      const newItem: LiveUnitType = {
         id: payload.id,
         date: payload.date,
         amount: payload.number,
       };
 
-      const updated: LiveUnit[] = state.trayContent.map((item) => {
+      const updated: LiveUnitType[] = state.trayContent.map((item) => {
         if (item.id === payload.id) {
           return newItem;
         } else return item;
       });
 
-      const isAlready = (element: LiveUnit) => element.id === payload.id;
+      const isAlready = (element: LiveUnitType) => element.id === payload.id;
 
       const final = {
         ...state,
@@ -90,6 +90,24 @@ export const reducer = (state: State, { type, payload }: any) => {
         (item) => (calculatedTotal = calculatedTotal + item.amount)
       );
       return { ...final, total: calculatedTotal };
+
+    case "CLEAR_PLANTING":
+      const cleared = {
+        ...state,
+        total: 0,
+      };
+
+      return { ...cleared, trayContent: payload };
+
+    case "REMOVE_PLANTING_ITEM":
+      let withoutRemoved: any = state.trayContent.filter(
+        (item) => item.id !== payload
+      );
+      let itemToRemove: any = state.trayContent.filter(item => item.id === payload)
+
+      let updatedTotal = state.total - itemToRemove[0].amount;
+      let tempState = { ...state, total: updatedTotal };
+      return { ...tempState , trayContent: withoutRemoved };
 
     case "SET_DATE":
       return { ...state, plantingDate: payload };

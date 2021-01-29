@@ -2,13 +2,15 @@ import React from "react";
 import TodayIcon from "@material-ui/icons/Today";
 import EcoIcon from "@material-ui/icons/Eco";
 import { useLiveContext } from "../../providers/liveContext";
+import moment from 'moment';
 
 interface LiveProps {
   plantName: string;
   id: string;
+  date: string;
 }
 
-const LiveUnit = ({ id, plantName}:LiveProps) => {
+const LiveUnit = ({ id, plantName, date }: LiveProps) => {
   const { dispatch, ACTIONS }: any = useLiveContext();
 
   const getMoreOnEvent = (e: any, eventId: string, eventType: string) => {
@@ -29,7 +31,7 @@ const LiveUnit = ({ id, plantName}:LiveProps) => {
   return (
     <div className="liveUnit">
       <EcoIcon />
-      {/* <span>{plantName}</span> */}
+      <span>{plantName}</span>
     </div>
   );
 };
