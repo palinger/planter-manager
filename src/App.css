@@ -359,6 +359,10 @@ body {
 .tray {
   display: flex;
   flex-direction: column;
+  border: 1px solid darkgrey;
+  border-radius: 4px;
+  padding: 4px;
+  background: linear-gradient(0deg, #d5d5d5, #f6f7a6)
 }
 
 .tray h5 {
