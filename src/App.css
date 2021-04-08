@@ -349,3 +349,28 @@ body {
 .liveUnit span {
   font-size: 12px;
 }
+
+.trayContent {
+  padding: 24px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.tray {
+  display: flex;
+  flex-direction: column;
+}
+
+.tray h5 {
+  margin: 8px 0;
+}
+
+.tray span {
+  font-weight: bold;
+  font-size: small;
+}
+.tray p {
+  margin: 4px 0;
+  font-weight: bold;
+  font-size: small;
+}

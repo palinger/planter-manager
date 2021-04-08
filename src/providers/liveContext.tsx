@@ -8,8 +8,14 @@ export type LiveDate = {
 };
 
 export type ModalSelection = {
-  id: string;
+  id: string; 
   date: LiveDate;
+};
+
+export type LivePlantedType = {
+  id: number;
+  date: LiveDate;
+  trayContent: LiveUnitType[];
 };
 
 export type LiveUnitType = {
@@ -25,11 +31,12 @@ export type State = {
   modalState: boolean;
   capacity: number;
   total: number;
+  planted: LivePlantedType[];
 };
 
 const initialState: State = {
   trayContent: [],
-  plantingDate: "2021-01-01",
+  plantingDate: moment().format("YYYY-MM-DD"),
   modalSelection: {
     id: "",
     date: {
@@ -38,8 +45,9 @@ const initialState: State = {
     },
   },
   modalState: false,
-  capacity: 60,
+  capacity: 99,
   total: 0,
+  planted: [],
 };
 
 const Context = React.createContext([
@@ -53,6 +61,8 @@ const ACTIONS = {
   PLANTING: "PLANTING",
   REMOVE_PLANTING_ITEM: "REMOVE_PLANTING_ITEM",
   CLEAR_PLANTING: "CLEAR_PLANTING",
+
+  PLANT_TO_TRAY: "PLANT_TO_TRAY",
 
   SET_DATE: "SET_DATE",
   CLEAR_TRAY: "CLEAR_TRAY",
@@ -103,11 +113,13 @@ export const reducer = (state: State, { type, payload }: any) => {
       let withoutRemoved: any = state.trayContent.filter(
         (item) => item.id !== payload
       );
-      let itemToRemove: any = state.trayContent.filter(item => item.id === payload)
+      let itemToRemove: any = state.trayContent.filter(
+        (item) => item.id === payload
+      );
 
       let updatedTotal = state.total - itemToRemove[0].amount;
       let tempState = { ...state, total: updatedTotal };
-      return { ...tempState , trayContent: withoutRemoved };
+      return { ...tempState, trayContent: withoutRemoved };
 
     case "SET_DATE":
       return { ...state, plantingDate: payload };
@@ -120,6 +132,9 @@ export const reducer = (state: State, { type, payload }: any) => {
 
     case "SET_MODAL_STATE":
       return { ...state, modalState: payload };
+
+    case "PLANT_TO_TRAY":
+      return { ...state, planted: payload };
 
     default:
       return state;

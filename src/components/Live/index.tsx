@@ -1,18 +1,38 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Select from "react-select";
 import EcoIcon from "@material-ui/icons/Eco";
 import LiveUnit from "../LiveUnit";
 import LiveUnitRow from "../LiveUnitRow";
 import { options, nameMap } from "../../providers/plantData";
-import { useLiveContext, LiveUnitType } from "../../providers/liveContext";
+import { useLiveContext, LiveUnitType, LivePlantedType } from "../../providers/liveContext";
+import moment from "moment";
 
 const Live = () => {
   const [selected, setSelected] = useState<string[]>([]);
-  const [date, setDate] = useState("2021-01-01");
+  const [date, setDate] = useState(moment().format("YYYY-MM-DD"));
   const { state, dispatch, ACTIONS }: any = useLiveContext();
 
+  const selectInputRef = useRef<Select>(null);
+
   const submitSelection = () => {
-    console.log("submit");
+    const newTray = {
+      id: state.planted.length +1,
+      date: date,
+      trayContent: state.trayContent,
+    };
+
+    dispatch({
+      type: ACTIONS.PLANT_TO_TRAY,
+      payload: state.planted.concat(newTray),
+    });
+
+    dispatch({
+      type: ACTIONS.CLEAR_TRAY,
+      payload: [],
+    });
+
+    setSelected([]);
+    selectInputRef.current && selectInputRef.current.select.clearValue();
   };
 
   const onDateChange = (e: any) => {
@@ -22,6 +42,7 @@ const Live = () => {
       type: ACTIONS.SET_DATE,
       payload: e.target.value,
     });
+    onPlantChangeHandler([], "clear");
   };
 
   const onPlantChangeHandler = (selection: any, action: any) => {
@@ -41,12 +62,17 @@ const Live = () => {
     setSelected(sel);
   };
 
-  let liveCollection: any = [];
+  let liveCollection: JSX.Element[] = [];
 
   state.trayContent.map((unit: LiveUnitType, index: number) =>
     new Array(unit.amount).fill(1).map((plantUnit, index) => {
       liveCollection.push(
-        <LiveUnit key={index} id={unit.id} plantName={nameMap[unit.id]} date={unit.date.harvestDate} />
+        <LiveUnit
+          key={index}
+          id={unit.id}
+          plantName={nameMap[unit.id]}
+          date={unit.date.harvestDate}
+        />
       );
     })
   );
@@ -75,6 +101,7 @@ const Live = () => {
               onChange={(selection: any, action: any) =>
                 onPlantChangeHandler(selection, action)
               }
+              ref={selectInputRef}
               isMulti
               options={options}
             />
@@ -93,6 +120,17 @@ const Live = () => {
             <EcoIcon /> Plant selected
           </button>
         </div>
+      </div>
+      <div className="trayContent">
+        {state.planted.map((tray:LivePlantedType) => (
+          <div className="tray">
+            <h5>Tray no. {tray.id}</h5>
+            <span>Planted on {tray.date}</span>
+            {tray.trayContent.map((plant) => (
+              <p>{plant.id}:<span>{plant.amount}</span></p>
+            ))}
+          </div>
+        ))}
       </div>
       <div className="liveWrapper">{liveCollection}</div>
     </div>

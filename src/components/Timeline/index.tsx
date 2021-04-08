@@ -107,19 +107,20 @@ const Timeline = () => {
       </div>
       <div className="overflowWrapper">
         <div className="visualWrapper">
-          <div className="dayNumbers">
-            {new Array(16).fill(0).map((item: number, index: number) => {
-              return (
-                <div
-                  key={index}
-                  className={calculateIsWeekend(state.harvestDate, index)}
-                >
-                  {/* <div>{20 - index}</div> */}
-                  <div>{calculateDates(state.harvestDate, index)}</div>
-                </div>
-              );
-            })}
-          </div>
+          {state.selection.length > 0 &&
+            <div className="dayNumbers">
+              {new Array(16).fill(0).map((item: number, index: number) => {
+                return (
+                  <div
+                    key={index}
+                    className={calculateIsWeekend(state.harvestDate, index)}
+                  >
+                    <div>{calculateDates(state.harvestDate, index)}</div>
+                  </div>
+                );
+              })}
+            </div>
+          }
           <div>
             {state?.selection?.map((item: string, index: number) => {
               return (
@@ -131,6 +132,20 @@ const Timeline = () => {
               );
             })}
           </div>
+          {state.selection.length > 3 &&
+            <div className="dayNumbers">
+              {new Array(16).fill(0).map((item: number, index: number) => {
+                return (
+                  <div
+                    key={index}
+                    className={calculateIsWeekend(state.harvestDate, index)}
+                  >
+                    <div>{calculateDates(state.harvestDate, index)}</div>
+                  </div>
+                );
+              })}
+            </div>
+          }
         </div>
         <Modal
           ariaHideApp={false}

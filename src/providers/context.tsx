@@ -1,4 +1,5 @@
 import React, { useContext, useReducer } from "react";
+import moment from "moment";
 
 export type ModalSelection = {
   id: string;
@@ -15,7 +16,7 @@ export type State = {
 
 const initialState: State = {
   selection: [],
-  harvestDate: "2021-01-01",
+  harvestDate: moment().format("YYYY-MM-DD"),
   modalSelection: {
     id: "",
     type: "",
