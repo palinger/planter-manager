@@ -34,7 +34,7 @@ export type State = {
   planted: LivePlantedType[];
 };
 
-const plantedLocalState = JSON.parse(localStorage.getItem("plantedTrays") || "");
+const plantedLocalState = JSON.parse(localStorage.getItem("plantedTrays") || "[]");
 
 
 const initialState: State = {
