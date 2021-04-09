@@ -289,6 +289,14 @@ body {
   justify-content: flex-end;
 }
 
+.submitSelection button {
+  margin: 4px
+}
+
+.submitSelection button svg {
+  margin-right: 4px
+}
+
 .liveControl {
   display: flex;
   align-items: center;

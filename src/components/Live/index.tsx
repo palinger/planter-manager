@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import Select from "react-select";
 import EcoIcon from "@material-ui/icons/Eco";
+import StorefrontIcon from '@material-ui/icons/Storefront';
 import LiveUnit from "../LiveUnit";
 import LiveUnitRow from "../LiveUnitRow";
 import { options, nameMap } from "../../providers/plantData";
@@ -62,6 +63,14 @@ const Live = () => {
     setSelected(sel);
   };
 
+  const harvestTrays = () => {
+    localStorage.setItem('plantedTrays', '[]');
+    dispatch({
+      type: ACTIONS.PLANT_TO_TRAY,
+      payload: [],
+    });
+  };
+
   let liveCollection: JSX.Element[] = [];
 
   state.trayContent.map((unit: LiveUnitType, index: number) =>
@@ -116,8 +125,11 @@ const Live = () => {
           <span>Remaining: {state.capacity - state.total}</span>
         </div>
         <div className="submitSelection">
-          <button onClick={submitSelection}>
+          <button onClick={submitSelection} disabled={state.trayContent.length === 0}>
             <EcoIcon /> Plant selected
+          </button>
+          <button onClick={harvestTrays} disabled={state.planted.length === 0}>
+            <StorefrontIcon /> Harvest Trays
           </button>
         </div>
       </div>

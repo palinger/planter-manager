@@ -1,6 +1,6 @@
 import React, { useContext, useReducer } from "react";
 import moment from "moment";
-import { plantData } from "./plantData";
+// import { plantData } from "./plantData";
 
 export type LiveDate = {
   plantingDate: string;
@@ -34,6 +34,9 @@ export type State = {
   planted: LivePlantedType[];
 };
 
+const plantedLocalState = JSON.parse(localStorage.getItem("plantedTrays") || "");
+
+
 const initialState: State = {
   trayContent: [],
   plantingDate: moment().format("YYYY-MM-DD"),
@@ -47,7 +50,7 @@ const initialState: State = {
   modalState: false,
   capacity: 99,
   total: 0,
-  planted: [],
+  planted: plantedLocalState,
 };
 
 const Context = React.createContext([
@@ -134,6 +137,7 @@ export const reducer = (state: State, { type, payload }: any) => {
       return { ...state, modalState: payload };
 
     case "PLANT_TO_TRAY":
+      localStorage.setItem('plantedTrays', JSON.stringify(payload));
       return { ...state, planted: payload };
 
     default:
